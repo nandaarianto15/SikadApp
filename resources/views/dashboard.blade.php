@@ -5,7 +5,10 @@
 @section('content')
 <div class="p-4 lg:p-8 max-w-7xl mx-auto animate-[fadeIn_0.5s_ease-out]">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <div><h1 class="text-2xl font-bold text-gray-800">Dashboard Pemohon</h1><p class="text-gray-500 mt-1">Kelola naskah dinas dan pantau status pengajuan.</p></div>
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800">Dashboard Pemohon</h1>
+            <p class="text-gray-500 mt-1">Kelola naskah dinas dan pantau status pengajuan.</p>
+        </div>
         <a href="{{ route('select') }}" class="w-full md:w-auto bg-[#00A651] text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:shadow-emerald-500/40 hover:bg-emerald-600 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 active:scale-95">
             <i data-lucide="pen-tool" size="18"></i> Buat Pengajuan Baru
         </a>

@@ -82,11 +82,27 @@
                 <span class="hidden sm:inline tracking-tight">SIKAD <span class="opacity-80 font-normal">Internal</span></span>
             </div>
             <div class="flex items-center gap-4 text-sm">
-                <div class="flex items-center gap-3 bg-emerald-700/50 py-1.5 pl-2 pr-4 rounded-full border border-emerald-500/30">
-                    <div class="w-8 h-8 bg-white text-[#00A651] rounded-full flex items-center justify-center font-bold text-xs border-2 border-emerald-200">BS</div>
-                    <div class="flex flex-col leading-none hidden sm:flex"><span class="font-bold">Budi Santoso</span><span class="text-[10px] text-emerald-100 opacity-80">Staf Pelaksana</span></div>
-                </div>
-                <a href="{{ route('landing') }}" class="p-2.5 hover:bg-emerald-700 rounded-full transition-colors text-emerald-100 hover:text-white active:scale-95" title="Keluar"><i data-lucide="log-out" size="20"></i></a>
+                @auth
+                    <div class="flex items-center gap-3 bg-emerald-700/50 py-1.5 pl-2 pr-4 rounded-full border border-emerald-500/30">
+                        <div class="w-8 h-8 bg-white text-[#00A651] rounded-full flex items-center justify-center font-bold text-xs border-2 border-emerald-200">
+                            {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
+                        </div>
+                        <div class="flex flex-col leading-none hidden sm:flex">
+                            <span class="font-bold">{{ auth()->user()->name }}</span>
+                            <span class="text-[10px] text-emerald-100 opacity-80">{{ ucfirst(auth()->user()->role) }}</span>
+                        </div>
+                    </div>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button
+                            type="submit"
+                            class="p-2.5 bg-emerald-700/50 hover:bg-emerald-700 rounded-full transition-colors text-emerald-100 hover:text-white active:scale-95"
+                            title="Keluar"
+                        >
+                            <i data-lucide="log-out" size="20"></i>
+                        </button>
+                    </form>
+                @endauth
             </div>
         </div>
     </nav>
@@ -95,5 +111,12 @@
     
     <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
+    
+    <script>
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
 </body>
 </html>

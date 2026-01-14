@@ -6,16 +6,20 @@
 <div class="flex flex-col h-screen bg-[#F3F4F6] font-sans">
     <div class="bg-white px-4 lg:px-6 py-4 border-b flex items-center justify-between shadow-sm sticky top-0 z-40 shrink-0">
         <div class="flex items-center gap-4">
-            <a href="{{ route('select') }}" class="hover:bg-gray-100 p-2 rounded-full transition-colors"><i data-lucide="chevron-left" size="24" class="text-gray-500"></i></a>
+            <a href="{{ route('select') }}" class="hover:bg-gray-100 p-2 rounded-full transition-colors">
+                <i data-lucide="chevron-left" size="24" class="text-gray-500"></i>
+            </a>
             <div>
                 <h2 class="font-bold text-lg text-gray-800 flex flex-col sm:flex-row sm:items-center sm:gap-2">
-                    <span>Pengajuan</span><span id="wizard-title" class="text-[#00A651] truncate max-w-[200px] sm:max-w-none">...</span>
+                    <span>Pengajuan</span>
+                    <span id="wizard-title" class="text-[#00A651] truncate max-w-[200px] sm:max-w-none">...</span>
                 </h2>
                 <p class="text-xs text-gray-500 hidden sm:block">Lengkapi data dan dokumen persyaratan</p>
             </div>
         </div>
         <div class="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-500 font-medium">
-            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div><span class="hidden sm:inline">Draft Tersimpan</span>
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="hidden sm:inline">Draft Tersimpan</span>
         </div>
     </div>
     
@@ -51,7 +55,9 @@
                 <h3 class="font-bold text-gray-800 border-b pb-4 mb-6 flex items-center gap-3 text-lg">
                     <i data-lucide="upload-cloud" size="20" class="text-[#00A651]"></i> Upload Persyaratan
                 </h3>
-                <div id="wizard-reqs-container" class="space-y-4"></div>
+                <div id="wizard-reqs-container" class="space-y-4">
+                    <!-- Konten akan diisi oleh JavaScript -->
+                </div>
             </div>
         </div>
     </div>
@@ -63,4 +69,11 @@
         </button>
     </div>
 </div>
+
+<script>
+    // Memastikan lucide.createIcons() dipanggil setelah konten dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+        lucide.createIcons();
+    });
+</script>
 @endsection

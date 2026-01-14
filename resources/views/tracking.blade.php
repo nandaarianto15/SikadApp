@@ -13,68 +13,72 @@
     </div>
     
     <div class="flex-1 overflow-y-auto p-4 md:p-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-2 space-y-6 animate-[slideUp_0.6s_ease-out]">
-                
-                <!-- Status Messages Rendered Here -->
-                <div id="tracking-status-message"></div>
-
-                <!-- Document Preview -->
-                <div class="bg-gray-500/5 rounded-2xl p-2 border border-black/5 overflow-x-auto">
-                    <div class="bg-white rounded-xl shadow-lg min-w-[320px] min-h-[600px] flex flex-col items-center p-8 md:p-12 relative overflow-hidden mx-auto">
-                        <div class="w-full max-w-[210mm] text-[12px] leading-relaxed relative font-serif text-gray-800">
-                            <div class="text-center font-bold border-b-4 double-border border-black pb-4 mb-8">
-                                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-2">
-                                    <div class="w-14 h-16 bg-yellow-400/20 grayscale opacity-50 flex items-center justify-center border border-black/20 text-[8px] shrink-0">LOGO</div>
-                                    <div>
-                                        <div class="text-lg tracking-widest">PEMERINTAH PROVINSI KALIMANTAN TIMUR</div>
-                                        <div class="text-xl sm:text-2xl tracking-wide">DINAS KOMUNIKASI DAN INFORMATIKA</div>
+        <div class="max-w-7xl mx-auto">
+            <!-- Status Messages - Full Width -->
+            <div id="tracking-status-message" class="mb-6 animate-[slideUp_0.6s_ease-out]">
+                <!-- Status messages will be rendered here -->
+            </div>
+            
+            <!-- Grid for Document Preview and Sidebar -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-6 animate-[slideUp_0.6s_ease-out]">
+                    <!-- Document Preview -->
+                    <div class="bg-gray-500/5 rounded-2xl p-2 border border-black/5 overflow-x-auto">
+                        <div class="bg-white rounded-xl shadow-lg w-full flex flex-col items-center p-8 md:p-12 relative overflow-hidden">
+                            <div class="w-full text-[12px] leading-relaxed relative font-serif text-gray-800">
+                                <div class="text-center font-bold border-b-4 double-border border-black pb-4 mb-8">
+                                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-2">
+                                        <div class="w-14 h-16 bg-yellow-400/20 grayscale opacity-50 flex items-center justify-center border border-black/20 text-[8px] shrink-0">LOGO</div>
+                                        <div>
+                                            <div class="text-lg tracking-widest">PEMERINTAH PROVINSI KALIMANTAN TIMUR</div>
+                                            <div class="text-xl sm:text-2xl tracking-wide">DINAS KOMUNIKASI DAN INFORMATIKA</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="mb-8 overflow-x-auto">
-                                <table class="w-full min-w-[300px]">
-                                    <tbody>
-                                        <tr><td class="w-20 align-top">Nomor</td><td id="preview-nomor" class="align-top">: ___/___/____</td><td class="text-right align-top hidden sm:table-cell">Samarinda, <span id="preview-date"></span></td></tr>
-                                        <tr><td class="align-top">Perihal</td><td class="align-top">: <b id="preview-perihal">Draft</b></td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <p class="text-justify mb-4 indent-8 leading-loose">Sehubungan dengan kegiatan implementasi Sistem Pemerintahan Berbasis Elektronik (SPBE), dengan ini kami sampaikan permohonan sebagaimana terlampir.</p>
-                            <div class="mt-12 text-right">
-                                <p>Hormat Kami,</p>
-                                <div class="h-20"></div>
-                                <p class="font-bold">Pemohon</p>
+                                <div class="mb-8 overflow-x-auto">
+                                    <table class="w-full min-w-[300px]">
+                                        <tbody>
+                                            <tr><td class="w-20 align-top">Nomor</td><td id="preview-nomor" class="align-top">: ___/___/____</td><td class="text-right align-top hidden sm:table-cell">Samarinda, <span id="preview-date"></span></td></tr>
+                                            <tr><td class="align-top">Perihal</td><td class="align-top">: <b id="preview-perihal">Draft</b></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="text-justify mb-4 indent-8 leading-loose">Sehubungan dengan kegiatan implementasi Sistem Pemerintahan Berbasis Elektronik (SPBE), dengan ini kami sampaikan permohonan sebagaimana terlampir.</p>
+                                <div class="mt-12 text-right">
+                                    <p>Hormat Kami,</p>
+                                    <div class="h-20"></div>
+                                    <p class="font-bold">Pemohon</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Detail Requirements -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
-                        <i data-lucide="file-text" size="20" class="text-[#00A651]"></i> Detail Dokumen Persyaratan
-                    </h3>
-                    <div id="tracking-reqs-list" class="grid gap-3"></div>
-                </div>
-            </div>
-
-            <!-- Sidebar Timeline -->
-            <div class="space-y-6 animate-[slideUp_0.8s_ease-out]">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-gray-800 mb-6 flex items-center gap-3 text-lg border-b pb-4">
-                        <i data-lucide="history" size="20" class="text-[#00A651]"></i> Riwayat Proses
-                    </h3>
-                    <div id="tracking-timeline" class="relative flex flex-col gap-0">
-                        <!-- Generated by JS -->
+                    <!-- Detail Requirements -->
+                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                            <i data-lucide="file-text" size="20" class="text-[#00A651]"></i> Detail Dokumen Persyaratan
+                        </h3>
+                        <div id="tracking-reqs-list" class="grid gap-3"></div>
                     </div>
-                    
-                    <!-- Debug Controls -->
-                    <div class="mt-8 pt-6 border-t border-gray-100">
-                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 text-center">Simulasi Debugging</p>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button onclick="updateTrackingStatus('revision')" class="bg-white border border-red-200 text-red-600 px-3 py-2 rounded-lg text-xs font-bold hover:bg-red-50 transition-colors shadow-sm">Simulasi Ditolak</button>
-                            <button onclick="updateTrackingStatus('signed')" class="bg-white border border-green-200 text-green-600 px-3 py-2 rounded-lg text-xs font-bold hover:bg-green-50 transition-colors shadow-sm">Simulasi Sukses</button>
+                </div>
+
+                <!-- Sidebar Timeline -->
+                <div class="space-y-6 animate-[slideUp_0.8s_ease-out]">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-gray-800 mb-6 flex items-center gap-3 text-lg border-b pb-4">
+                            <i data-lucide="history" size="20" class="text-[#00A651]"></i> Riwayat Proses
+                        </h3>
+                        <div id="tracking-timeline" class="relative flex flex-col gap-0">
+                            <!-- Generated by JS -->
+                        </div>
+                        
+                        <!-- Debug Controls -->
+                        <div class="mt-8 pt-6 border-t border-gray-100">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 text-center">Simulasi Debugging</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="updateTrackingStatus('revision')" class="bg-white border border-red-200 text-red-600 px-3 py-2 rounded-lg text-xs font-bold hover:bg-red-50 transition-colors shadow-sm">Simulasi Ditolak</button>
+                                <button onclick="updateTrackingStatus('signed')" class="bg-white border border-green-200 text-green-600 px-3 py-2 rounded-lg text-xs font-bold hover:bg-green-50 transition-colors shadow-sm">Simulasi Sukses</button>
+                            </div>
                         </div>
                     </div>
                 </div>

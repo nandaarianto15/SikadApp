@@ -24,7 +24,7 @@ class HomeController extends Controller
                     'date'     => optional($item->published_at)->format('d M Y'),
                     'image'    => $item->image
                         ? asset('storage/' . $item->image)
-                        : 'https://via.placeholder.com/400x300',
+                        : 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop',
                     'desc'     => str()->limit(strip_tags($item->content), 120),
                     'slug'     => $item->slug,
                 ];
@@ -55,9 +55,28 @@ class HomeController extends Controller
         return response()->json($services);
     }
 
-    public function auth()
+    public function getServiceBySlug($slug)
     {
-        return view('auth');
+        $service = Service::where('slug', $slug)->where('is_active', true)->with(['requirements' => function ($q) {
+                $q->orderBy('order');
+            }])->first();
+            
+        if (!$service) {
+            return response()->json(['error' => 'Service not found'], 404);
+        }
+        
+        return response()->json([
+            'id'    => $service->id,
+            'name'  => $service->name,
+            'slug'  => $service->slug,
+            'desc'  => $service->description,
+            'icon'  => $service->icon ?? 'file-text',
+            'reqs'  => $service->requirements->map(fn ($r) => [
+                'name'        => $r->name,
+                'description' => $r->description,
+                'required'    => $r->is_required,
+            ]),
+        ]);
     }
 
     public function dashboard()
