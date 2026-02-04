@@ -12,8 +12,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('submission_id')->constrained('submissions')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->enum('status_from', ['draft', 'process', 'revision', 'signed'])->nullable();
-            $table->enum('status_to', ['draft', 'process', 'revision', 'signed']);
+            $table->enum('status_from', ['draft', 'process', 'revision', 'rejected', 'signed'])->nullable();
+            $table->enum('status_to', ['draft', 'process', 'revision', 'rejected', 'signed']);
             $table->text('notes')->nullable();
             $table->timestamps();
         });

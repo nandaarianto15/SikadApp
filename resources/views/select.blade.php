@@ -5,7 +5,7 @@
 @section('content')
 <div class="min-h-screen bg-[#F3F4F6] p-4 lg:p-6 font-sans">
     <div class="max-w-7xl mx-auto animate-[slideUp_0.5s_ease-out]">
-        <a href="{{ route('dashboard') }}" class="mb-8 flex items-center text-gray-500 hover:text-[#00A651] font-bold transition-colors group">
+        <a href="{{ route('pemohon.dashboard') }}" class="mb-8 flex items-center text-gray-500 hover:text-[#00A651] font-bold transition-colors group">
             <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm mr-2 group-hover:shadow-md transition-all"><i data-lucide="chevron-left" size="20"></i></div> Kembali ke Dashboard
         </a>
         <div class="text-center mb-12">
@@ -20,8 +20,5 @@
 
 @push('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    renderSelectGrid();
-});
 </script>
 @endpush

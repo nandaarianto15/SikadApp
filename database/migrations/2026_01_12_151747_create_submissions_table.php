@@ -17,10 +17,13 @@ return new class extends Migration
             $table->string('tujuan')->nullable();
             $table->date('tanggal_surat')->nullable();
             $table->text('isi_ringkas')->nullable();
-            $table->enum('status', ['draft', 'process', 'revision', 'signed'])->default('draft');
+            $table->enum('status', ['draft', 'process', 'revision', 'rejected', 'signed'])->default('draft');
             $table->string('nomor_surat')->nullable();
             $table->timestamp('signed_at')->nullable();
             $table->foreignId('signed_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->text('rejection_reason')->nullable();
+            $table->timestamp('rejected_at')->nullable();
+            $table->foreignId('rejected_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
     }

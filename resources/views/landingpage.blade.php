@@ -106,17 +106,19 @@
                 <h2 class="text-[#00A651] font-bold uppercase tracking-widest text-xs mb-2">Informasi Terkini</h2>
                 <h3 class="text-3xl font-bold text-gray-800">Berita & Pengumuman</h3>
             </div>
-            <div class="hidden md:flex items-center gap-2 text-gray-400 text-xs italic">
-                <i data-lucide="info" size="12"></i> Geser untuk melihat lainnya
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2 text-gray-400 text-xs italic">
+                    <i data-lucide="info" size="12"></i> Geser untuk melihat lainnya
+                </div>
             </div>
         </div>
         <!-- Dynamic Articles Container -->
         <div id="articles-container" class="news-slider flex gap-6 overflow-x-auto snap-x snap-mandatory px-2 pb-8"></div>
         
         <div class="mt-8 flex justify-center animate-slide-up opacity-0" style="animation-delay: 400ms; animation-fill-mode: forwards;">
-            <button class="px-8 py-3 bg-white border border-emerald-200 text-[#00A651] font-bold rounded-full hover:bg-emerald-50 hover:shadow-md transition-all shadow-sm flex items-center gap-2 group text-xs active:scale-95">
+            <a href="{{ route('news') }}" class="px-8 py-3 bg-white border border-emerald-200 text-[#00A651] font-bold rounded-full hover:bg-emerald-50 hover:shadow-md transition-all shadow-sm flex items-center gap-2 group text-xs active:scale-95">
                 Lihat Berita Lainnya <i data-lucide="arrow-right" size="14" class="group-hover:translate-x-1 transition-transform"></i>
-            </button>
+            </a>
         </div>
     </div>
 </div>

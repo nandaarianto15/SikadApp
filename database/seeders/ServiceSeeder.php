@@ -111,7 +111,7 @@ class ServiceSeeder extends Seeder
                     ],
                     [
                         'is_required' => true,
-                        'order' => $index + 1,
+                        'sort_order' => $index + 1,
                     ]
                 );
             }

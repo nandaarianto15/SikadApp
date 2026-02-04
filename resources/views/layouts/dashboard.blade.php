@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="user-role" content="{{ Auth::user()->role }}">
     <title>@yield('title', 'SIKAD KALTIM') - Dashboard</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
  
@@ -94,11 +98,7 @@
                     </div>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button
-                            type="submit"
-                            class="p-2.5 bg-emerald-700/50 hover:bg-emerald-700 rounded-full transition-colors text-emerald-100 hover:text-white active:scale-95"
-                            title="Keluar"
-                        >
+                        <button type="submit" class="p-2.5 bg-emerald-700/50 hover:bg-emerald-700 rounded-full transition-colors text-emerald-100 hover:text-white active:scale-95" title="Keluar">
                             <i data-lucide="log-out" size="20"></i>
                         </button>
                     </form>
