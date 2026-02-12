@@ -23,7 +23,6 @@
         @csrf
         <input type="hidden" name="service_id" value="{{ $service->id }}">
         <div class="max-w-4xl mx-auto space-y-6 lg:space-y-8 animate-[slideUp_0.5s_ease-out]">
-            <!-- Form Utama -->
             <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-sm border border-gray-100">
                 <h3 class="font-bold text-gray-800 border-b pb-4 mb-6 flex items-center gap-3 text-lg">
                     <i data-lucide="file-text" size="20" class="text-[#00A651]"></i> Data Utama Naskah
@@ -50,7 +49,6 @@
             </div>
 
             @if($service->form_fields)
-            <!-- Dynamic Form Fields -->
             <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-sm border border-gray-100">
                 <h3 class="font-bold text-gray-800 border-b pb-4 mb-6 flex items-center gap-3 text-lg">
                     <i data-lucide="edit-3" size="20" class="text-[#00A651]"></i> Data Formulir
@@ -95,7 +93,6 @@
             </div>
             @endif
             
-            <!-- Dynamic Requirements -->
             <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-sm border border-gray-100">
                 <h3 class="font-bold text-gray-800 border-b pb-4 mb-6 flex items-center gap-3 text-lg">
                     <i data-lucide="upload-cloud" size="20" class="text-[#00A651]"></i> Upload Persyaratan
@@ -143,16 +140,13 @@
 @endsection
 
 @push('scripts')
-<!-- Tambahkan CSS dan JS Flatpickr dari CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Inisialisasi Lucide Icons
     lucide.createIcons();
 
-    // --- INISIALISASI FLATPICKR UNTUK TANGGAL ---
     flatpickr("#input-tanggal_surat", {
         dateFormat: "d/m/Y",
         altInput: true,
@@ -167,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
         defaultDate: "today",
     });
 
-    // --- VALIDASI FILE PDF ---
     const fileInputs = document.querySelectorAll('input[type="file"]');
     fileInputs.forEach(input => {
         input.addEventListener('change', function(event) {

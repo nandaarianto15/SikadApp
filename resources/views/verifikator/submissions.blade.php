@@ -19,7 +19,6 @@
         </div>
     </div>
 
-    <!-- All Submissions Table -->
     <div>
         <div class="flex justify-between items-center mb-4">
             <h3 class="font-bold text-lg text-gray-700 flex items-center gap-2">
@@ -37,7 +36,6 @@
     </div>
 </div>
 
-<!-- Filter Modal -->
 <div id="filter-modal" class="fixed inset-0 z-50 bg-black/50 hidden flex items-center justify-center">
     <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
         <div class="flex justify-between items-center mb-4">
@@ -87,7 +85,6 @@
         const modal = document.getElementById('filter-modal');
         modal.classList.toggle('hidden');
         
-        // Reinitialize Lucide icons when modal is shown
         if (!modal.classList.contains('hidden')) {
             setTimeout(() => {
                 lucide.createIcons();
@@ -96,7 +93,6 @@
     }
     
     document.addEventListener('DOMContentLoaded', () => {
-        // Initialize Lucide icons
         lucide.createIcons();
     });
 </script>

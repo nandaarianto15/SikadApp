@@ -44,13 +44,11 @@
                 <label for="is_active" class="ml-2 block text-sm text-gray-700">Aktif</label>
             </div>
             
-            <!-- FORM FIELDS SECTION -->
             <div>
                 <h3 class="text-lg font-medium text-gray-800 mb-4">Formulir Isian Dokumen</h3>
                 <p class="text-sm text-gray-600 mb-4">Tambahkan field-field yang akan diisi oleh pemohon pada dokumen ini.</p>
                 
                 <div id="form-fields-container" class="space-y-4">
-                    <!-- Field #1 muncul dari awal -->
                     <div class="form-field-item border border-gray-200 rounded-lg p-4" data-field-id="0">
                         <div class="flex justify-between items-center mb-4">
                             <h4 class="text-sm font-medium text-gray-700">Field #1</h4>
@@ -103,7 +101,6 @@
                 </div>
             </div>
 
-            <!-- REQUIREMENTS SECTION -->
             <div>
                 <h3 class="text-lg font-medium text-gray-800 mb-4">Persyaratan Dokumen</h3>
                 
@@ -159,12 +156,11 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     let requirementCount = document.querySelectorAll('.requirement-item').length;
-    let formFieldCount = 1; // Mulai dari 1 karena Field #1 sudah ada
+    let formFieldCount = 1;
 
     const requirementsContainer = document.getElementById('requirements-container');
     const addRequirementBtn = document.getElementById('add-requirement');
 
-    // --- Requirements Logic ---
     addRequirementBtn.addEventListener('click', function () {
         const index = requirementCount;
         const div = createRequirementElement(index);
@@ -233,16 +229,14 @@ document.addEventListener('DOMContentLoaded', function () {
         requirementCount = items.length;
     }
 
-    // --- Form Fields Logic ---
     const formFieldsContainer = document.getElementById('form-fields-container');
     const addFormFieldBtn = document.getElementById('add-form-field');
 
-    // Event listener untuk tombol hapus Field #1 (yang sudah ada)
     document.querySelector('.remove-form-field').addEventListener('click', function () {
         removeFormField(this.closest('.form-field-item'));
     });
 
-    // --- PERBAIKAN: Tambahkan event listener untuk field select yang sudah ada dari awal (Field #1) ---
+
     const initialFieldSelect = document.querySelector('.form-field-item .field-type-select');
     if (initialFieldSelect) {
         initialFieldSelect.addEventListener('change', (e) => {
@@ -352,7 +346,6 @@ document.addEventListener('DOMContentLoaded', function () {
         formFieldCount = items.length;
     }
     
-    // --- Form Submission Logic ---
     document.getElementById('service-form').addEventListener('submit', function(e) {
         const formFields = document.querySelectorAll('.form-field-item');
         formFields.forEach((item, index) => {

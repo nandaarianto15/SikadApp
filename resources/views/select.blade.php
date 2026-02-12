@@ -12,7 +12,6 @@
             <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Pilih Jenis Naskah Dinas</h2>
             <p class="text-gray-500 max-w-2xl mx-auto">Silakan pilih template naskah yang ingin Anda ajukan.</p>
         </div>
-        <!-- Dynamic Select Grid -->
         <div id="select-type-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-12"></div>
     </div>
 </div>

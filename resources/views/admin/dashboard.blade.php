@@ -20,22 +20,18 @@
     </div>
     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-        <!-- Stats Card 1 -->
         <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5 group">
             <div class="bg-blue-50 p-4 rounded-xl text-blue-600 group-hover:scale-110 transition-transform"><i data-lucide="users" size="28"></i></div>
             <div><div class="text-3xl font-bold text-gray-800">{{ $totalUsers }}</div><div class="text-sm text-gray-500 font-medium">Total Pengguna</div></div>
         </div>
-        <!-- Stats Card 2 -->
         <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5 group">
             <div class="bg-green-50 p-4 rounded-xl text-green-600 group-hover:scale-110 transition-transform"><i data-lucide="file-text" size="28"></i></div>
             <div><div class="text-3xl font-bold text-gray-800">{{ $totalNews }}</div><div class="text-sm text-gray-500 font-medium">Total Berita</div></div>
         </div>
-        <!-- Stats Card 3 -->
         <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5 group">
             <div class="bg-purple-50 p-4 rounded-xl text-purple-600 group-hover:scale-110 transition-transform"><i data-lucide="briefcase" size="28"></i></div>
             <div><div class="text-3xl font-bold text-gray-800">{{ $totalServices }}</div><div class="text-sm text-gray-500 font-medium">Total Layanan</div></div>
         </div>
-        <!-- Stats Card 4 -->
         <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5 group">
             <div class="bg-yellow-50 p-4 rounded-xl text-yellow-600 group-hover:scale-110 transition-transform"><i data-lucide="clock" size="28"></i></div>
             <div><div class="text-3xl font-bold text-gray-800">28</div><div class="text-sm text-gray-500 font-medium">Menunggu Verifikasi</div></div>

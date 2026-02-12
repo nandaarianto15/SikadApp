@@ -4,7 +4,6 @@
 @endphp
 
 @if($showLandingNav)
-<!-- Landing Navbar -->
 <nav id="landing-navbar" class="fixed w-full z-50 transition-all duration-500 py-4 lg:py-6 bg-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
@@ -33,7 +32,6 @@
             </div>
         </div>
     </div>
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-white flex flex-col pt-24 px-6 gap-6 animate-fade-in lg:hidden">
         <button onclick="mobileNav('beranda')" class="text-left text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4 active:text-[#00A651]">Beranda</button>
         <button onclick="mobileNav('berita')" class="text-left text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4 active:text-[#00A651]">Berita</button>

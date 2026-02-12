@@ -11,7 +11,7 @@ class SubmissionHistory extends Model
         'user_id',
         'status_from',
         'status_to',
-        'notes',
+        'notes'
     ];
 
     public function submission()
@@ -32,22 +32,22 @@ class SubmissionHistory extends Model
     public function getStatusColorAttribute()
     {
         return [
-            'draft' => 'gray',
-            'process' => 'blue',
-            'revision' => 'yellow',
-            'rejected' => 'red',
-            'signed' => 'green',
+            'draft'     => 'gray',
+            'process'   => 'blue',
+            'revision'  => 'yellow',
+            'rejected'  => 'red',
+            'signed'    => 'green',
         ][$this->status_to] ?? 'gray';
     }
     
     public function getStatusLabelAttribute()
     {
         return [
-            'draft' => 'Draft',
-            'process' => 'Diproses',
-            'revision' => 'Revisi',
-            'rejected' => 'Ditolak',
-            'signed' => 'Ditandatangani',
+            'draft'     => 'Draft',
+            'process'   => 'Diproses',
+            'revision'  => 'Revisi',
+            'rejected'  => 'Ditolak',
+            'signed'    => 'Ditandatangani',
         ][$this->status_to] ?? 'Unknown';
     }
 }

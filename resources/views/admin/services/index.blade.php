@@ -55,7 +55,6 @@
                                 <a href="{{ route('admin.services.edit', $service->id) }}" class="text-blue-600 hover:text-blue-800">
                                     <i data-lucide="edit" size="16"></i>
                                 </a>
-                                {{-- <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus layanan ini?')"> --}}
                                 <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST" onsubmit="return">
                                     @csrf
                                     @method('DELETE')

@@ -15,12 +15,12 @@ class Service extends Model
         'description',
         'icon',
         'is_active',
-        'form_fields', // Tambahkan ini
+        'form_fields'
     ];
     
     protected $casts = [
         'is_active' => 'boolean',
-        'form_fields' => 'array', // Tambahkan ini
+        'form_fields' => 'array'
     ];
 
     public function requirements()

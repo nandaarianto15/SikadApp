@@ -45,7 +45,6 @@
                 <label for="is_active" class="ml-2 block text-sm text-gray-700">Aktif</label>
             </div>
             
-            <!-- FORM FIELDS SECTION -->
             <div>
                 <h3 class="text-lg font-medium text-gray-800 mb-4">Formulir Isian Dokumen</h3>
                 <p class="text-sm text-gray-600 mb-4">Tambahkan field-field yang akan diisi oleh pemohon pada dokumen ini.</p>
@@ -107,7 +106,6 @@
                 </div>
             </div>
 
-            <!-- REQUIREMENTS SECTION -->
             <div>
                 <h3 class="text-lg font-medium text-gray-800 mb-4">Persyaratan Dokumen</h3>
                 
@@ -164,14 +162,12 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize counts based on existing data
     let requirementCount = document.querySelectorAll('.requirement-item').length;
     let formFieldCount = {{ $service->form_fields ? count($service->form_fields) : 0 }};
 
     const requirementsContainer = document.getElementById('requirements-container');
     const addRequirementBtn = document.getElementById('add-requirement');
 
-    // --- REQUIREMENTS LOGIC ---
     addRequirementBtn.addEventListener('click', function () {
         const index = requirementCount;
         const div = createRequirementElement(index);
@@ -240,18 +236,15 @@ document.addEventListener('DOMContentLoaded', function () {
         requirementCount = items.length;
     }
 
-    // --- FORM FIELDS LOGIC ---
     const formFieldsContainer = document.getElementById('form-fields-container');
     const addFormFieldBtn = document.getElementById('add-form-field');
 
-    // Add event listeners to existing remove buttons
     document.querySelectorAll('.remove-form-field').forEach(btn => {
         btn.addEventListener('click', function () {
             removeFormField(this.closest('.form-field-item'));
         });
     });
 
-    // --- PERBAIKAN: Tambahkan event listener untuk field select yang sudah ada dari awal ---
     document.querySelectorAll('.form-field-item .field-type-select').forEach(select => {
         select.addEventListener('change', (e) => {
             const optionsContainer = e.target.closest('.form-field-item').querySelector('.field-options-container');
@@ -360,7 +353,6 @@ document.addEventListener('DOMContentLoaded', function () {
         formFieldCount = items.length;
     }
     
-    // --- Form Submission Logic ---
     document.getElementById('service-form').addEventListener('submit', function(e) {
         const formFields = document.querySelectorAll('.form-field-item');
         formFields.forEach((item, index) => {

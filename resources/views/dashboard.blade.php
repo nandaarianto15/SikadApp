@@ -15,22 +15,18 @@
     </div>
     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-        <!-- Stats Card 1 -->
         <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5 group">
             <div class="bg-blue-50 p-4 rounded-xl text-blue-600 group-hover:scale-110 transition-transform"><i data-lucide="clock" size="28"></i></div>
             <div><div class="text-3xl font-bold text-gray-800">{{ $stats['process'] }}</div><div class="text-sm text-gray-500 font-medium">Sedang Proses</div></div>
         </div>
-        <!-- Stats Card 2 -->
         <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5 group">
             <div class="bg-yellow-50 p-4 rounded-xl text-yellow-600 group-hover:scale-110 transition-transform"><i data-lucide="alert-circle" size="28"></i></div>
             <div><div class="text-3xl font-bold text-gray-800">{{ $stats['revision'] }}</div><div class="text-sm text-gray-500 font-medium">Perlu Revisi</div></div>
         </div>
-        <!-- Stats Card 3 - DITOLAK -->
         <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5 group">
             <div class="bg-red-50 p-4 rounded-xl text-red-600 group-hover:scale-110 transition-transform"><i data-lucide="x-circle" size="28"></i></div>
             <div><div class="text-3xl font-bold text-gray-800">{{ $stats['rejected'] }}</div><div class="text-sm text-gray-500 font-medium">Ditolak</div></div>
         </div>
-        <!-- Stats Card 4 -->
         <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5 group">
             <div class="bg-green-50 p-4 rounded-xl text-green-600 group-hover:scale-110 transition-transform"><i data-lucide="check-circle" size="28"></i></div>
             <div><div class="text-3xl font-bold text-gray-800">{{ $stats['signed'] }}</div><div class="text-sm text-gray-500 font-medium">Naskah Terbit</div></div>
@@ -49,7 +45,6 @@
             </div>
         </div>
         
-        <!-- Loading indicator -->
         <div id="loading-indicator" class="hidden bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden p-8">
             <div class="flex justify-center items-center">
                 <i data-lucide="loader-2" class="animate-spin text-[#00A651] mr-2" size="24"></i>
@@ -57,14 +52,12 @@
             </div>
         </div>
         
-        <!-- Submissions Table Container -->
         <div id="submissions-container">
             @include('submissions-table', ['submissions' => $submissions])
         </div>
     </div>
 </div>
 
-<!-- Filter Modal -->
 <div id="filter-modal" class="fixed inset-0 z-50 bg-black/50 hidden flex items-center justify-center">
     <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
         <div class="flex justify-between items-center mb-4">
@@ -108,7 +101,6 @@
     </div>
 </div>
 
-<!-- Filter Modal -->
 <div id="filter-modal" class="fixed inset-0 z-50 bg-black/50 hidden flex items-center justify-center">
     <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
         <div class="flex justify-between items-center mb-4">
@@ -155,12 +147,10 @@
 
 @push('scripts')
 <script>
-    // Function to toggle filter modal
     function toggleFilterModal() {
         const modal = document.getElementById('filter-modal');
         modal.classList.toggle('hidden');
         
-        // Reinitialize Lucide icons when modal is shown
         if (!modal.classList.contains('hidden')) {
             setTimeout(() => {
                 lucide.createIcons();
@@ -168,9 +158,7 @@
         }
     }
     
-    // Function to filter submissions without page refresh
     function filterSubmissions(filter) {
-        // Update active filter button
         document.querySelectorAll('.filter-btn').forEach(btn => {
             if (btn.dataset.filter === filter) {
                 btn.classList.remove('text-gray-600', 'hover:bg-gray-100');
@@ -181,33 +169,26 @@
             }
         });
         
-        // Update URL without refresh
         const url = new URL(window.location);
         url.searchParams.set('filter', filter);
         window.history.pushState({}, '', url);
         
-        // Show loading indicator
         document.getElementById('loading-indicator').classList.remove('hidden');
         document.getElementById('submissions-container').classList.add('hidden');
         
-        // Fetch filtered submissions
         fetch(`/pemohon/api/filter-submissions?filter=${filter}`)
             .then(response => response.json())
             .then(data => {
-                // Update submissions table
                 document.getElementById('submissions-container').innerHTML = data.html;
                 
-                // Update pagination
                 const paginationContainer = document.querySelector('.pagination-container');
                 if (paginationContainer) {
                     paginationContainer.innerHTML = data.pagination;
                 }
                 
-                // Hide loading indicator and show table
                 document.getElementById('loading-indicator').classList.add('hidden');
                 document.getElementById('submissions-container').classList.remove('hidden');
                 
-                // Reinitialize Lucide icons
                 lucide.createIcons();
             })
             .catch(error => {
@@ -217,55 +198,44 @@
             });
     }
     
-    // Function to reset filter
     function resetFilter() {
         document.getElementById('filter-select').value = 'all';
         document.getElementById('start-date').value = '';
         document.getElementById('end-date').value = '';
         
-        // Apply reset filter
         applyFilter();
     }
     
-    // Function to apply filter from modal
     function applyFilter() {
         const filter = document.getElementById('filter-select').value;
         const startDate = document.getElementById('start-date').value;
         const endDate = document.getElementById('end-date').value;
         
-        // Build query string
         const params = new URLSearchParams();
         params.set('filter', filter);
         if (startDate) params.set('start_date', startDate);
         if (endDate) params.set('end_date', endDate);
         
-        // Update URL without refresh
         const url = new URL(window.location);
         url.search = params.toString();
         window.history.pushState({}, '', url);
         
-        // Show loading indicator
         document.getElementById('loading-indicator').classList.remove('hidden');
         document.getElementById('submissions-container').classList.add('hidden');
         
-        // Fetch filtered submissions
         fetch(`/pemohon/api/filter-submissions?${params.toString()}`)
             .then(response => response.json())
             .then(data => {
-                // Update submissions table
                 document.getElementById('submissions-container').innerHTML = data.html;
                 
-                // Update pagination
                 const paginationContainer = document.querySelector('.pagination-container');
                 if (paginationContainer) {
                     paginationContainer.innerHTML = data.pagination;
                 }
                 
-                // Hide loading indicator and show table
                 document.getElementById('loading-indicator').classList.add('hidden');
                 document.getElementById('submissions-container').classList.remove('hidden');
                 
-                // Update filter buttons
                 document.querySelectorAll('.filter-btn').forEach(btn => {
                     if (btn.dataset.filter === filter) {
                         btn.classList.remove('text-gray-600', 'hover:bg-gray-100');
@@ -276,10 +246,8 @@
                     }
                 });
                 
-                // Close modal
                 toggleFilterModal();
                 
-                // Reinitialize Lucide icons
                 lucide.createIcons();
             })
             .catch(error => {
@@ -289,7 +257,6 @@
             });
     }
     
-    // Handle filter form submission
     document.addEventListener('DOMContentLoaded', () => {
         const filterForm = document.getElementById('filter-form');
         if (filterForm) {
@@ -299,7 +266,6 @@
             });
         }
         
-        // Initialize Lucide icons
         lucide.createIcons();
     });
 </script>

@@ -17,8 +17,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'nip' => 'required|string',
-            'password' => 'required|string',
+            'nip'       => 'required|string',
+            'password'  => 'required|string',
         ]);
 
         $nip = str_replace(' ', '', $credentials['nip']);

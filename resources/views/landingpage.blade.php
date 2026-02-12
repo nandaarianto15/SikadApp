@@ -46,7 +46,6 @@
 @endpush
 
 @section('content')
-<!-- Hero Section -->
 <div id="beranda" class="relative min-h-[90vh] flex items-center pt-20 lg:pt-0 overflow-hidden bg-[#00A651]">
     <div class="absolute inset-0 z-0">
         <div class="absolute top-0 -left-10 w-96 h-96 bg-[#F59E0B] rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob"></div>
@@ -70,7 +69,6 @@
             </div>
         </div>
 
-        <!-- Floating Card Animation -->
         <div class="hidden lg:block relative animate-slide-up">
             <div class="relative glass-panel border border-white/40 rounded-3xl p-4 shadow-2xl transform rotate-[-3deg] hover:rotate-0 transition-transform duration-700 animate-float max-w-md mx-auto">
                 <div class="bg-white rounded-2xl overflow-hidden shadow-inner min-h-[450px] flex flex-col p-6 space-y-4 relative">
@@ -98,7 +96,6 @@
     </div>
 </div>
 
-<!-- Articles Section -->
 <div id="berita" class="py-16 bg-white relative z-20 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row justify-between items-end mb-8 animate-slide-up opacity-0" style="animation-fill-mode: forwards;">
@@ -112,7 +109,6 @@
                 </div>
             </div>
         </div>
-        <!-- Dynamic Articles Container -->
         <div id="articles-container" class="news-slider flex gap-6 overflow-x-auto snap-x snap-mandatory px-2 pb-8"></div>
         
         <div class="mt-8 flex justify-center animate-slide-up opacity-0" style="animation-delay: 400ms; animation-fill-mode: forwards;">
@@ -123,7 +119,6 @@
     </div>
 </div>
 
-<!-- Panduan Section -->
 <div id="panduan" class="py-16 bg-gray-50 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 animate-slide-up">
@@ -133,25 +128,21 @@
         <div class="relative">
             <div class="hidden md:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-200 to-transparent z-0"></div>
             <div class="grid md:grid-cols-4 gap-10 relative z-10">
-                <!-- Step 1 -->
                 <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg text-center group hover:-translate-y-2 hover:shadow-xl transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 0ms; animation-fill-mode: forwards;">
                     <div class="w-16 h-16 bg-[#00A651] text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6 ring-8 ring-emerald-50 group-hover:ring-emerald-100 transition-all duration-500 relative shadow-md">01</div>
                     <h4 class="font-bold text-xl text-gray-800 mb-3">Login & Pilih</h4>
                     <p class="text-sm text-gray-500 leading-relaxed">Masuk dengan NIP & pilih jenis layanan yang dibutuhkan.</p>
                 </div>
-                <!-- Step 2 -->
                 <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg text-center group hover:-translate-y-2 hover:shadow-xl transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 150ms; animation-fill-mode: forwards;">
                     <div class="w-16 h-16 bg-[#00A651] text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6 ring-8 ring-emerald-50 group-hover:ring-emerald-100 transition-all duration-500 relative shadow-md">02</div>
                     <h4 class="font-bold text-xl text-gray-800 mb-3">Lengkapi Data</h4>
                     <p class="text-sm text-gray-500 leading-relaxed">Isi formulir digital & upload dokumen persyaratan (PDF).</p>
                 </div>
-                <!-- Step 3 -->
                 <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg text-center group hover:-translate-y-2 hover:shadow-xl transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 300ms; animation-fill-mode: forwards;">
                     <div class="w-16 h-16 bg-[#00A651] text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6 ring-8 ring-emerald-50 group-hover:ring-emerald-100 transition-all duration-500 relative shadow-md">03</div>
                     <h4 class="font-bold text-xl text-gray-800 mb-3">Verifikasi</h4>
                     <p class="text-sm text-gray-500 leading-relaxed">Pemeriksaan berjenjang oleh atasan secara digital.</p>
                 </div>
-                <!-- Step 4 -->
                 <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg text-center group hover:-translate-y-2 hover:shadow-xl transition-all duration-500 animate-slide-up opacity-0" style="animation-delay: 450ms; animation-fill-mode: forwards;">
                     <div class="w-16 h-16 bg-[#00A651] text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6 ring-8 ring-emerald-50 group-hover:ring-emerald-100 transition-all duration-500 relative shadow-md">04</div>
                     <h4 class="font-bold text-xl text-gray-800 mb-3">TTE & Terbit</h4>
@@ -162,7 +153,6 @@
     </div>
 </div>
 
-<!-- Fitur Section -->
 <div id="fitur" class="bg-white py-16 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-12 animate-slide-up">
@@ -189,7 +179,6 @@
     </div>
 </div>
 
-<!-- Statistik Section -->
 <div id="statistik" class="bg-[#1F2937] text-white py-16 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-12 animate-slide-up">
@@ -197,7 +186,6 @@
             <h3 class="text-3xl font-bold text-white">Statistik Kinerja Daerah</h3>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <!-- Stat Items -->
             <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group animate-slide-up opacity-0" style="animation-delay: 0ms; animation-fill-mode: forwards;">
                 <i data-lucide="file-text" size="36" class="mx-auto mb-4 text-blue-400 group-hover:scale-110 transition-transform duration-300"></i>
                 <h4 class="text-3xl font-bold mb-2">145.2K</h4>
@@ -222,7 +210,6 @@
     </div>
 </div>
 
-<!-- Layanan Section -->
 <div id="layanan" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-12 animate-slide-up">
@@ -238,7 +225,6 @@
             <input id="service-search-input" type="text" placeholder="Cari layanan (Contoh: Izin, Cuti, DPRD)..." class="w-full pl-10 pr-4 py-3 rounded-full border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-[#00A651]/20 focus:border-[#00A651] shadow-sm transition-all text-sm hover:shadow-md" oninput="renderServices(this.value)">
         </div>
 
-        <!-- Dynamic Service List -->
         <div id="services-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         <div id="services-empty" class="text-center text-gray-400 py-10 hidden">
             <p>Tidak ada layanan yang cocok dengan pencarian.</p>
@@ -246,7 +232,6 @@
     </div>
 </div>
 
-<!-- Service Modal -->
 <div id="service-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in hidden">
     
 </div>

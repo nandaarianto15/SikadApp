@@ -15,12 +15,12 @@ class News extends Model
         'image',
         'published_at',
         'is_published',
-        'author_id',
+        'author_id'
     ];
 
     protected $casts = [
         'is_published' => 'boolean',
-        'published_at' => 'datetime',
+        'published_at' => 'datetime'
     ];
 
     public function author()

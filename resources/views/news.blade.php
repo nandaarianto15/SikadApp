@@ -4,7 +4,6 @@
 
 @section('content')
 <div class="min-h-screen bg-gray-50">
-    <!-- Hero Section -->
     <div class="bg-gradient-to-r from-[#00A651] to-emerald-600 text-white">
         <div class="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
             <div class="max-w-3xl">
@@ -14,9 +13,7 @@
         </div>
     </div>
 
-    <!-- News Grid -->
     <div class="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <!-- Back Button -->
         <div class="mb-8">
             <a href="javascript:history.back()" class="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-emerald-200 text-[#00A651] font-bold rounded-full hover:bg-emerald-50 hover:shadow-md transition-all shadow-sm group text-xs active:scale-95">
                 <i data-lucide="arrow-left" size="14" class="group-hover:-translate-x-1 transition-transform"></i>
@@ -26,7 +23,6 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             @forelse ($news as $item)
-                <!-- Card Mirip Landing Page -->
                 <a href="{{ route('news.detail', $item->slug) }}" class="group w-full rounded-2xl overflow-hidden shadow-lg transition-all duration-500 border snap-center flex flex-col cursor-pointer relative h-[420px] hover:-translate-y-2 hover:shadow-2xl bg-white border-gray-100 hover:border-emerald-200">
                     <div class="relative h-48 overflow-hidden shrink-0 bg-gray-200">
                         @if($item->image)
@@ -58,7 +54,6 @@
             @endforelse
         </div>
         
-        <!-- Pagination -->
         @if ($news->hasPages())
         <div class="mt-12">
             {{ $news->links() }}

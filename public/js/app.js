@@ -57,7 +57,7 @@ window.addEventListener('scroll', () => {
 
 let NEWS_DATA = [];
 let SERVICES_DATA = [];
-let uploadedFiles = {}; // Objek untuk menyimpan file yang diupload { requirement_id: file }
+let uploadedFiles = {};
 
 document.addEventListener('DOMContentLoaded', async () => {
     lucide.createIcons();
@@ -67,9 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         await loadSelectData();
         renderSelectGrid();
     }
-    
-    // Fungsi loadWizardData dan renderRecentActivity tidak lagi dipanggil di sini
-    // karena datanya sudah disediakan oleh backend (Blade)
 });
 
 async function loadLandingData() {

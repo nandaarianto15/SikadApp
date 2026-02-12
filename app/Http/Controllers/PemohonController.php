@@ -49,10 +49,10 @@ class PemohonController extends Controller
         
         $allSubmissions = $user->submissions()->get();
         $stats = [
-            'process' => $allSubmissions->where('status', 'process')->count(),
-            'revision' => $allSubmissions->where('status', 'revision')->count(),
-            'rejected' => $allSubmissions->where('status', 'rejected')->count(),
-            'signed' => $allSubmissions->where('status', 'signed')->count(),
+            'process'   => $allSubmissions->where('status', 'process')->count(),
+            'revision'  => $allSubmissions->where('status', 'revision')->count(),
+            'rejected'  => $allSubmissions->where('status', 'rejected')->count(),
+            'signed'    => $allSubmissions->where('status', 'signed')->count(),
         ];
 
         return view('dashboard', compact('stats', 'submissions', 'filter'));
@@ -60,7 +60,7 @@ class PemohonController extends Controller
     
     public function filterSubmissions(Request $request)
     {
-        $user = Auth::user();
+        $user   = Auth::user();
         $filter = $request->query('filter', 'all');
         
         $submissionsQuery = $user->submissions()->with('service');
@@ -87,8 +87,8 @@ class PemohonController extends Controller
         $html = view('submissions-table', compact('submissions'))->render();
         
         return response()->json([
-            'html' => $html,
-            'pagination' => $submissions->links()->toHtml()
+            'html'          => $html,
+            'pagination'    => $submissions->links()->toHtml()
         ]);
     }
 
@@ -99,8 +99,8 @@ class PemohonController extends Controller
 
     public function wizard(Request $request)
     {
-        $serviceSlug = $request->query('service');
-        $service = Service::where('slug', $serviceSlug)->where('is_active', true)->firstOrFail();
+        $serviceSlug    = $request->query('service');
+        $service        = Service::where('slug', $serviceSlug)->where('is_active', true)->firstOrFail();
         
         return view('wizard', compact('service'));
     }
@@ -123,13 +123,13 @@ class PemohonController extends Controller
         $service = Service::findOrFail($request->service_id);
 
         $rules = [
-            'service_id' => 'required|exists:services,id',
-            'perihal' => 'required|string|max:255',
-            'tujuan' => 'nullable|string|max:255',
+            'service_id'    => 'required|exists:services,id',
+            'perihal'       => 'required|string|max:255',
+            'tujuan'        => 'nullable|string|max:255',
             'tanggal_surat' => 'nullable|date',
-            'isi_ringkas' => 'nullable|string',
-            'documents' => 'required|array',
-            'documents.*' => 'required|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:5120'
+            'isi_ringkas'   => 'nullable|string',
+            'documents'     => 'required|array',
+            'documents.*'   => 'required|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:5120'
         ];
 
         if ($service->form_fields) {
@@ -160,44 +160,44 @@ class PemohonController extends Controller
             DB::beginTransaction();
 
             $submission = Submission::create([
-                'tracking_id' => 'REG-' . strtoupper(Str::random(8)),
-                'user_id' => Auth::id(),
-                'service_id' => $request->service_id,
-                'perihal' => $request->perihal,
-                'tujuan' => $request->tujuan,
+                'tracking_id'   => 'REG-' . strtoupper(Str::random(8)),
+                'user_id'       => Auth::id(),
+                'service_id'    => $request->service_id,
+                'perihal'       => $request->perihal,
+                'tujuan'        => $request->tujuan,
                 'tanggal_surat' => $request->tanggal_surat,
-                'isi_ringkas' => $request->isi_ringkas,
-                'form_data' => $request->input('form_data'),
-                'status' => 'process',
+                'isi_ringkas'   => $request->isi_ringkas,
+                'form_data'     => $request->input('form_data'),
+                'status'        => 'process',
             ]);
 
             foreach ($request->file('documents') as $requirementId => $file) {
                 $path = $file->store('submissions/' . $submission->id, 'private');
                 
                 SubmissionDocument::create([
-                    'submission_id' => $submission->id,
-                    'service_requirement_id' => $requirementId,
-                    'file_path' => $path,
-                    'file_name' => $file->getClientOriginalName(),
-                    'file_size' => $file->getSize(),
-                    'status' => 'pending',
+                    'submission_id'             => $submission->id,
+                    'service_requirement_id'    => $requirementId,
+                    'file_path'                 => $path,
+                    'file_name'                 => $file->getClientOriginalName(),
+                    'file_size'                 => $file->getSize(),
+                    'status'                    => 'pending',
                 ]);
             }
 
             SubmissionHistory::create([
                 'submission_id' => $submission->id,
-                'user_id' => Auth::id(),
-                'status_from' => null,
-                'status_to' => 'process',
-                'notes' => 'Pengajuan berhasil dibuat.'
+                'user_id'       => Auth::id(),
+                'status_from'   => null,
+                'status_to'     => 'process',
+                'notes'         => 'Pengajuan berhasil dibuat.'
             ]);
 
             DB::commit();
 
             return response()->json([
-                'success' => true,
-                'message' => 'Pengajuan berhasil dibuat!',
-                'tracking_id' => $submission->tracking_id
+                'success'       => true,
+                'message'       => 'Pengajuan berhasil dibuat!',
+                'tracking_id'   => $submission->tracking_id
             ]);
 
         } catch (\Exception $e) {
@@ -226,12 +226,12 @@ class PemohonController extends Controller
         $service = $submission->service;
 
         $rules = [
-            'perihal' => 'required|string|max:255',
-            'tujuan' => 'nullable|string|max:255',
+            'perihal'       => 'required|string|max:255',
+            'tujuan'        => 'nullable|string|max:255',
             'tanggal_surat' => 'nullable|date',
-            'isi_ringkas' => 'nullable|string',
-            'documents' => 'array',
-            'documents.*' => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:5120',
+            'isi_ringkas'   => 'nullable|string',
+            'documents'     => 'array',
+            'documents.*'   => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:5120',
         ];
 
         if ($service->form_fields) {
@@ -260,10 +260,10 @@ class PemohonController extends Controller
 
         $requiredRequirements = $submission->service->requirements()->where('is_required', true)->get();
         foreach ($requiredRequirements as $req) {
-            $requirementId = $req->id;
+            $requirementId  = $req->id;
             
-            $hasNewFile = $request->hasFile("documents.$requirementId");
-            $existingDoc = $submission->documents()->where('service_requirement_id', $requirementId)->first();
+            $hasNewFile     = $request->hasFile("documents.$requirementId");
+            $existingDoc    = $submission->documents()->where('service_requirement_id', $requirementId)->first();
             
             if (!$hasNewFile && !$existingDoc) {
                 throw ValidationException::withMessages([
@@ -282,11 +282,15 @@ class PemohonController extends Controller
             DB::beginTransaction();
 
             $submission->update([
-                'perihal' => $request->perihal,
-                'tujuan' => $request->tujuan,
-                'tanggal_surat' => $request->tanggal_surat,
-                'isi_ringkas' => $request->isi_ringkas,
-                'form_data' => $request->input('form_data'),
+                'perihal'                   => $request->perihal,
+                'tujuan'                    => $request->tujuan,
+                'tanggal_surat'             => $request->tanggal_surat,
+                'isi_ringkas'               => $request->isi_ringkas,
+                'form_data'                 => $request->input('form_data'),
+                'document_status'           => 'pending',
+                'document_rejection_reason' => null,
+                'document_verified_by'      => null,
+                'document_verified_at'      => null,
             ]);
 
             foreach ($submission->service->requirements->sortBy('order') as $req) {
@@ -303,24 +307,24 @@ class PemohonController extends Controller
                         $path = $file->store('submissions/' . $submission->id, 'private');
                         
                         $existingDoc->update([
-                            'file_path' => $path,
-                            'file_name' => $file->getClientOriginalName(),
-                            'file_size' => $file->getSize(),
-                            'status' => 'pending',
-                            'notes' => null,
-                            'verified_by' => null,
-                            'verified_at' => null,
+                            'file_path'     => $path,
+                            'file_name'     => $file->getClientOriginalName(),
+                            'file_size'     => $file->getSize(),
+                            'status'        => 'pending',
+                            'notes'         => null,
+                            'verified_by'   => null,
+                            'verified_at'   => null,
                         ]);
                     } else {
                         $path = $file->store('submissions/' . $submission->id, 'private');
                         
                         SubmissionDocument::create([
-                            'submission_id' => $submission->id,
-                            'service_requirement_id' => $requirementId,
-                            'file_path' => $path,
-                            'file_name' => $file->getClientOriginalName(),
-                            'file_size' => $file->getSize(),
-                            'status' => 'pending',
+                            'submission_id'             => $submission->id,
+                            'service_requirement_id'    => $requirementId,
+                            'file_path'                 => $path,
+                            'file_name'                 => $file->getClientOriginalName(),
+                            'file_size'                 => $file->getSize(),
+                            'status'                    => 'pending',
                         ]);
                     }
                 }
@@ -330,10 +334,10 @@ class PemohonController extends Controller
 
             SubmissionHistory::create([
                 'submission_id' => $submission->id,
-                'user_id' => Auth::id(),
-                'status_from' => $submission->getOriginal('status'),
-                'status_to' => 'process',
-                'notes' => 'Dokumen revisi telah dikirim ulang untuk diverifikasi kembali.'
+                'user_id'       => Auth::id(),
+                'status_from'   => $submission->getOriginal('status'),
+                'status_to'     => 'process',
+                'notes'         => 'Dokumen revisi telah dikirim ulang untuk diverifikasi kembali.'
             ]);
 
             DB::commit();
@@ -346,9 +350,9 @@ class PemohonController extends Controller
         } catch (ValidationException $e) {
             DB::rollBack();
             return response()->json([
-                'success' => false,
-                'message' => 'Terjadi kesalahan validasi.',
-                'errors' => $e->errors()
+                'success'   => false,
+                'message'   => 'Terjadi kesalahan validasi.',
+                'errors'    => $e->errors()
             ], 422);
         } catch (\Exception $e) {
             DB::rollBack();

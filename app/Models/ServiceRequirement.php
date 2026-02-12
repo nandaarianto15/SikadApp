@@ -14,11 +14,11 @@ class ServiceRequirement extends Model
         'name',
         'description',
         'is_required',
-        'sort_order',
+        'sort_order'
     ];
     
     protected $casts = [
-        'is_required' => 'boolean',
+        'is_required' => 'boolean'
     ];
     
     public function service()

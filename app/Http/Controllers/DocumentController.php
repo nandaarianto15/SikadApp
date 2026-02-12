@@ -11,7 +11,6 @@ class DocumentController extends Controller
 {
     public function show(SubmissionDocument $document)
     {
-        // Check if user is the owner or a verifikator
         if ($document->submission->user_id !== Auth::id() && Auth::user()->role !== 'verifikator') {
             abort(403, 'Anda tidak berhak mengakses dokumen ini.');
         }
@@ -26,14 +25,13 @@ class DocumentController extends Controller
         $mimeType = Storage::disk('private')->mimeType($filePath);
 
         return response($file, 200, [
-            'Content-Type' => $mimeType,
-            'Content-Disposition' => 'attachment; filename="' . $document->file_name . '"'
+            'Content-Type'          => $mimeType,
+            'Content-Disposition'   => 'attachment; filename="' . $document->file_name . '"'
         ]);
     }
 
     public function view(SubmissionDocument $document)
     {
-        // Check if user is the owner or a verifikator
         if ($document->submission->user_id !== Auth::id() && Auth::user()->role !== 'verifikator') {
             abort(403, 'Anda tidak berhak mengakses dokumen ini.');
         }
@@ -47,9 +45,9 @@ class DocumentController extends Controller
         return response()->stream(function () use ($path) {
             echo Storage::disk('private')->get($path);
         }, 200, [
-            'Content-Type'        => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="'.$document->file_name.'"',
-            'X-Content-Type-Options' => 'nosniff',
+            'Content-Type'              => 'application/pdf',
+            'Content-Disposition'       => 'inline; filename="'.$document->file_name.'"',
+            'X-Content-Type-Options'    => 'nosniff',
         ]);
     }
 }

@@ -74,7 +74,6 @@
         </tbody>
     </table>
     
-    <!-- Pagination -->
     @if ($submissions->hasPages())
     <div id="pagination-container" class="p-4 border-t border-gray-100 flex justify-between items-center">
         <div class="text-sm text-gray-600">
@@ -87,7 +86,6 @@
     @endif
 </div>
 
-<!-- Quick View Modal -->
 <div id="quick-view-modal" class="fixed inset-0 z-50 bg-black/50 hidden flex items-center justify-center">
     <div class="bg-white rounded-2xl p-6 w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
         <div class="flex justify-between items-center mb-4">
@@ -98,15 +96,12 @@
         </div>
         
         <div id="quick-view-content">
-            <!-- Content will be loaded here -->
         </div>
     </div>
 </div>
 
-<!-- Document Viewer Modal -->
 <div id="document-viewer-modal" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center">
     <div class="bg-white w-[92%] max-w-5xl h-[90vh] max-h-[90vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
-        <!-- Header -->
         <div class="p-4 border-b flex items-center justify-between shrink-0">
             <h3 id="modal-title" class="font-bold text-lg text-gray-800">Pratinjau Dokumen</h3>
             <div class="flex items-center gap-2">
@@ -120,9 +115,7 @@
             </div>
         </div>
 
-        <!-- Content -->
         <div class="flex-1 relative overflow-hidden p-4">
-            <!-- Loading -->
             <div id="pdf-loading" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                 <div class="text-center">
                     <i data-lucide="loader-2" class="animate-spin text-[#00A651]" size="32"></i>
@@ -132,7 +125,6 @@
                 </div>
             </div>
 
-            <!-- Error -->
             <div id="pdf-error" class="absolute inset-0 flex items-center justify-center bg-white z-10 hidden">
                 <div class="text-center text-red-600">
                     <i data-lucide="alert-circle" size="32"></i>
@@ -144,16 +136,13 @@
                 </div>
             </div>
 
-            <!-- PDF Viewer -->
             <iframe id="document-frame" class="w-full h-full border-0 rounded-xl" style="display: none;"></iframe>
         </div>
     </div>
 </div>
 
 <script>
-    // Function to show quick view
     function showQuickView(submissionId) {
-        // Show loading
         document.getElementById('quick-view-content').innerHTML = `
             <div class="flex justify-center items-center p-8">
                 <i data-lucide="loader-2" class="animate-spin text-[#00A651] mr-2" size="24"></i>
@@ -161,15 +150,12 @@
             </div>
         `;
         
-        // Show modal
         document.getElementById('quick-view-modal').classList.remove('hidden');
         lucide.createIcons();
         
-        // Fetch submission data
         fetch(`/verifikator/api/submission/${submissionId}`)
             .then(response => response.json())
             .then(data => {
-                // Determine button based on status
                 let actionButton = '';
                 if (data.status === 'signed' || data.status === 'rejected') {
                     actionButton = `
@@ -187,7 +173,6 @@
                     `;
                 }
                 
-                // Update modal content
                 document.getElementById('quick-view-content').innerHTML = `
                     <div class="space-y-4">
                         <div class="grid grid-cols-2 gap-4">
@@ -267,7 +252,6 @@
                     </div>
                 `;
                 
-                // Reinitialize Lucide icons
                 lucide.createIcons();
             })
             .catch(error => {
@@ -282,12 +266,10 @@
             });
     }
     
-    // Function to close quick view
     function closeQuickView() {
         document.getElementById('quick-view-modal').classList.add('hidden');
     }
     
-    // Function to open document modal (same as in app.js)
     function openDocumentModal(docId, fileName) {
         const modal = document.getElementById('document-viewer-modal');
         const frame = document.getElementById('document-frame');
@@ -303,7 +285,6 @@
         errorEl.classList.add('hidden');
         titleEl.innerText = `Pratinjau: ${fileName}`;
         
-        // Tentukan URL berdasarkan role user
         const userRole = document.querySelector('meta[name="user-role"]').getAttribute('content');
         const baseUrl = userRole === 'verifikator' ? '/verifikator' : '/pemohon';
         
@@ -327,7 +308,6 @@
         frame.src = url;
     }
 
-    // Function to close document modal
     function closeDocumentModal() {
         const modal = document.getElementById('document-viewer-modal');
         const frame = document.getElementById('document-frame');

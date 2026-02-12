@@ -7,21 +7,15 @@
     <meta name="user-role" content="{{ Auth::user()->role }}">
     <title>@yield('title', 'SIKAD KALTIM') - Dashboard</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>    
     <script src="https://unpkg.com/lucide@latest"></script>
-    
     <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
  
     <style>
         body { font-family: 'Inter', sans-serif; }
         
-        /* Animation Keyframes */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -47,7 +41,6 @@
         .animate-slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
         
-        /* Utility Classes */
         .glass-panel {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
@@ -78,7 +71,6 @@
     @stack('styles')
 </head>
 <body class="bg-gray-50 text-gray-900 overflow-x-hidden w-full">
-    <!-- App Navbar -->
     <nav class="bg-[#00A651] text-white p-4 shadow-md sticky top-0 z-40">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-2 lg:px-4">
             <div class="flex items-center gap-3 font-bold text-lg">
@@ -113,7 +105,6 @@
     @stack('scripts')
     
     <script>
-        // Initialize Lucide icons
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
         });

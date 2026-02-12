@@ -76,13 +76,11 @@
 </div>
 
 @push('scripts')
-<!-- Tambahkan CSS dan JS Flatpickr dari CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Inisialisasi CKEditor
     ClassicEditor
         .create(document.querySelector('#editor'), {
             toolbar: [
@@ -101,13 +99,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error(error);
         });
 
-    // Inisialisasi Flatpickr untuk tanggal publikasi
     flatpickr("#published_at_display", {
-        dateFormat: "d/m/Y", // Format tampilan dd/mm/yyyy
+        dateFormat: "d/m/Y",
         altInput: true,
-        altFormat: "j F Y", // Format alternatif untuk aksesibilitas
+        altFormat: "j F Y",
         locale: {
-            firstDayOfWeek: 1, // Minggu dimulai dari Senin
+            firstDayOfWeek: 1,
             weekdays: {
                 shorthand: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'],
                 longhand: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
@@ -117,13 +114,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 longhand: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
             },
         },
-        // Tambahkan konfigurasi untuk memastikan format hari-bulan-tahun
         disableMobile: "true",
         defaultDate: "{{ old('published_at_display', now()->format('d/m/Y')) }}",
-        // BATASI TANGGAL MAKSIMAL HARI INI
         maxDate: "today",
         onChange: function(selectedDates, dateStr, instance) {
-            // Update input hidden dengan format Y-m-d untuk keperluan submit
             const dateInput = document.getElementById('published_at');
             if (selectedDates[0]) {
                 const date = selectedDates[0];
@@ -135,14 +129,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Form submission handler
     document.getElementById('news-form').addEventListener('submit', function(e) {
-        // Pastikan tanggal sudah dalam format yang benar sebelum submit
         const displayInput = document.getElementById('published_at_display');
         const hiddenInput = document.getElementById('published_at');
         
         if (displayInput.value && !hiddenInput.value) {
-            // Jika hanya display input yang ada nilai, konversi ke format Y-m-d
             const parts = displayInput.value.split('/');
             if (parts.length === 3) {
                 hiddenInput.value = `${parts[2]}-${parts[1]}-${parts[0]}`;

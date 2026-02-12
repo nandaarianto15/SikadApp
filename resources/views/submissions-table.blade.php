@@ -56,7 +56,6 @@
         </tbody>
     </table>
     
-    <!-- Pagination -->
     @if ($submissions->hasPages())
     <div id="pagination-container" class="p-4 border-t border-gray-100 flex justify-between items-center">
         <div class="text-sm text-gray-600">

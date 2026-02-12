@@ -18,17 +18,17 @@ class HomeController extends Controller
     {
         $news = News::where('is_published', true)->orderByDesc('published_at')->limit(10)->get()->map(function ($item) {
             return [
-                'id'       => $item->id,
-                'title'    => $item->title,
-                'category' => $item->category,
-                'tag'      => $item->tag,
-                'date'     => $item->published_at->format('d M Y'),
-                'published_at_iso' => $item->published_at->toIso8601String(),
-                'image'    => $item->image
-                    ? asset('storage/' . $item->image)
-                    : 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop',
-                'desc'     => str()->limit(strip_tags($item->content), 120),
-                'slug'     => $item->slug,
+                'id'                => $item->id,
+                'title'             => $item->title,
+                'category'          => $item->category,
+                'tag'               => $item->tag,
+                'date'              => $item->published_at->format('d M Y'),
+                'published_at_iso'  => $item->published_at->toIso8601String(),
+                'image'             => $item->image
+                                        ? asset('storage/' . $item->image)
+                                        : 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop',
+                'desc'              => str()->limit(strip_tags($item->content), 120),
+                'slug'              => $item->slug,
             ];
         });
 
@@ -41,15 +41,15 @@ class HomeController extends Controller
                 $q->orderBy('sort_order');
             }])->orderBy('name')->get()->map(function ($service) {
                 return [
-                    'id'    => $service->id,
-                    'name'  => $service->name,
-                    'slug'  => $service->slug,
-                    'desc'  => $service->description,
-                    'icon'  => $service->icon ?? 'file-text',
-                    'reqs'  => $service->requirements->map(fn ($r) => [
-                        'name'        => $r->name,
-                        'description' => $r->description,
-                        'required'    => $r->is_required,
+                    'id'            => $service->id,
+                    'name'          => $service->name,
+                    'slug'          => $service->slug,
+                    'desc'          => $service->description,
+                    'icon'          => $service->icon ?? 'file-text',
+                    'reqs'          => $service->requirements->map(fn ($r) => [
+                        'name'          => $r->name,
+                        'description'   => $r->description,
+                        'required'      => $r->is_required,
                     ]),
                 ];
             });
@@ -68,44 +68,30 @@ class HomeController extends Controller
         }
         
         return response()->json([
-            'id'    => $service->id,
-            'name'  => $service->name,
-            'slug'  => $service->slug,
-            'desc'  => $service->description,
-            'icon'  => $service->icon ?? 'file-text',
-            'reqs'  => $service->requirements->map(fn ($r) => [
-                'name'        => $r->name,
-                'description' => $r->description,
-                'required'    => $r->is_required,
+            'id'            => $service->id,
+            'name'          => $service->name,
+            'slug'          => $service->slug,
+            'desc'          => $service->description,
+            'icon'          => $service->icon ?? 'file-text',
+            'reqs'          => $service->requirements->map(fn ($r) => [
+                'name'          => $r->name,
+                'description'   => $r->description,
+                'required'      => $r->is_required,
             ]),
         ]);
     }
 
     public function news(Request $request)
     {
-        $news = News::where('is_published', true)
-            ->orderByDesc('published_at')
-            ->paginate(9);
+        $news = News::where('is_published', true)->orderByDesc('published_at')->paginate(9);
             
         return view('news', compact('news'));
     }
 
     public function newsDetail($slug)
     {
-        $news = News::where('slug', $slug)
-            ->where('is_published', true)
-            ->firstOrFail();
-            
-        // Increment view count
-        // $news->increment('views');
-        
-        // Get related news
-        $relatedNews = News::where('is_published', true)
-            ->where('id', '!=', $news->id)
-            ->where('category', $news->category)
-            ->orderByDesc('published_at')
-            ->limit(3)
-            ->get();
+        $news           = News::where('slug', $slug)->where('is_published', true)->firstOrFail();
+        $relatedNews    = News::where('is_published', true)->where('id', '!=', $news->id)->where('category', $news->category)->orderByDesc('published_at')->limit(3)->get();
             
         return view('news-detail', compact('news', 'relatedNews'));
     }

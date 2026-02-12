@@ -173,6 +173,50 @@
         background-color: #d97706;
     }
     
+    /* PERUBAHAN: Style untuk tombol lihat di form revisi agar sama dengan dokumen persyaratan */
+    .view-button-revision {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        background-color: #00A651;
+        color: white;
+        border: 1px solid #00A651;
+    }
+    
+    .view-button-revision:hover {
+        background-color: #047857;
+    }
+    
+    /* PERUBAHAN: CSS untuk menghilangkan space kosong saat form revisi disembunyikan */
+    .hidden-form-container {
+        display: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .revision-form-container.hidden {
+        display: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* PERUBAHAN: CSS untuk mengatur margin document preview */
+    #document-preview-container {
+        transition: margin-top 0.3s ease;
+        margin-top: 0;
+    }
+    
+    #document-preview-container.with-form {
+        margin-top: 1.5rem;
+    }
+    
     .form-input {
         width: 100%;
         padding: 10px 14px;
@@ -407,6 +451,262 @@
     .verify-btn.reject:hover {
         background-color: #dc2626;
     }
+    
+    /* PERUBAHAN: Style untuk card verifikasi dokumen preview */
+    .document-preview-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        margin-bottom: 24px;
+    }
+    
+    .document-preview-header {
+        background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        padding: 16px 20px;
+        border-bottom: 1px solid #e5e7eb;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .document-preview-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1f2937;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .document-preview-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    .document-preview-status.approved {
+        background-color: #d1fae5;
+        color: #065f46;
+    }
+    
+    .document-preview-status.rejected {
+        background-color: #fee2e2;
+        color: #991b1b;
+    }
+    
+    .document-preview-status.pending {
+        background-color: #f3f4f6;
+        color: #4b5563;
+    }
+    
+    .document-preview-body {
+        padding: 20px;
+    }
+    
+    .document-preview-wrapper {
+        position: relative;
+        margin-bottom: 24px;
+    }
+    
+    .document-preview-status-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        z-index: 10;
+    }
+    
+    .document-preview-status-badge.approved {
+        background-color: #d1fae5;
+        color: #065f46;
+    }
+    
+    .document-preview-status-badge.rejected {
+        background-color: #fee2e2;
+        color: #991b1b;
+    }
+    
+    .document-preview-status-badge.pending {
+        background-color: #f3f4f6;
+        color: #4b5563;
+    }
+    
+    .verification-note {
+        margin-top: 16px;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+    
+    .verification-note.info {
+        background-color: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1e40af;
+    }
+    
+    .verification-note.error {
+        background-color: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #991b1b;
+    }
+    
+    .verification-actions-section {
+        padding: 16px 20px;
+        border-top: 1px solid #e5e7eb;
+        background: #f9fafb;
+    }
+    
+    .verification-actions-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 12px;
+    }
+    
+    .verification-actions-buttons {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    
+    .verification-reason-form {
+        margin-top: 16px;
+        padding: 16px;
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+    }
+    
+    /* PERUBAHAN: Style untuk card dokumen persyaratan */
+    .requirements-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+    }
+    
+    .requirements-header {
+        background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        padding: 16px 20px;
+        border-bottom: 1px solid #e5e7eb;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .requirements-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1f2937;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .requirements-body {
+        padding: 20px;
+    }
+    
+    .requirements-list {
+        display: grid;
+        gap: 12px;
+    }
+    
+    .requirement-item {
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        background: white;
+    }
+    
+    .requirement-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+    
+    .requirement-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .requirement-status-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    .requirement-status-icon.approved {
+        background-color: #d1fae5;
+        color: #065f46;
+    }
+    
+    .requirement-status-icon.rejected {
+        background-color: #fee2e2;
+        color: #991b1b;
+    }
+    
+    .requirement-status-icon.pending {
+        background-color: #f3f4f6;
+        color: #4b5563;
+    }
+    
+    .requirement-details {
+        flex: 1;
+    }
+    
+    .requirement-name {
+        font-size: 14px;
+        font-weight: 500;
+        color: #1f2937;
+    }
+    
+    .requirement-file-info {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 2px;
+    }
+    
+    .requirement-actions {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .requirement-note {
+        margin-top: 8px;
+        padding: 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        background: #f9fafb;
+    }
+    
+    .requirement-note.rejected {
+        background: #fef2f2;
+        color: #991b1b;
+    }
+    
+    .requirement-verification {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+    }
 </style>
 @endpush
 
@@ -472,7 +772,7 @@
             <!-- Grid for Document Preview and Sidebar -->
             <div class="grid-container">
                 <div class="grid-item space-y-6 animate-[slideUp_0.6s_ease-out]">
-                    <!-- Document Revision Form (Hanya muncul saat status revisi dan role pemohon) -->
+                    <!-- PERUBAHAN: Menggunakan div dengan conditional rendering untuk menghilangkan space kosong -->
                     @if($submission->status === 'revision' && Auth::user()->role === 'pemohon')
                     <div id="revision-form" class="revision-form-container p-6 hidden">
                         <div class="flex items-center justify-between mb-6">
@@ -485,7 +785,7 @@
                             </button>
                         </div>
                         
-                        <form id="revision-form-submit" action="{{ route('pemohon.updateSubmission', $submission) }}" method="POST" enctype="multipart/form-data">
+                        <form id="revision-form-submit" action="{{ route('pemohon.updateSubmission', $submission) }}" method="POST" enctype="multipart/form-data" onsubmit="event.preventDefault(); handleRevisionSubmit(this); return false;">
                             @csrf
                             <div class="space-y-6">
                                 <div class="alert-box alert-info">
@@ -651,8 +951,9 @@
                                                                 <input type="file" name="documents[{{ $req->id }}]" class="hidden" accept=".pdf" data-required="{{ $req->is_required ? 'true' : 'false' }}" @if($existingDoc && $existingDoc->status === 'rejected') required @endif onchange="handleRevisionFileUpload(event, {{ $req->id }})">
                                                             </label>
                                                         @else
-                                                            <a href="javascript:void(0);" onclick="openDocumentModal({{ $existingDoc->id }}, '{{ $existingDoc->file_name }}')" class="file-upload-button info">
-                                                                <i data-lucide="eye" size="16"></i>
+                                                            <!-- PERUBAHAN: Mengganti tombol lihat agar style-nya sama dengan dokumen persyaratan -->
+                                                            <a href="javascript:void(0);" onclick="openDocumentModal({{ $existingDoc->id }}, '{{ $existingDoc->file_name }}')" class="view-button-revision">
+                                                                <i data-lucide="eye" size="12"></i>
                                                                 Lihat
                                                             </a>
                                                         @endif
@@ -679,176 +980,248 @@
                     </div>
                     @endif
                     
-                    <!-- Document Preview -->
-                    <div class="bg-gray-500/5 rounded-2xl p-2 border border-black/5 overflow-x-auto">
-                        <div id="document-preview" class="bg-white rounded-xl shadow-lg w-full flex flex-col items-center p-8 md:p-12 relative overflow-hidden">
-                            <div class="w-full text-[12px] leading-relaxed relative font-serif text-gray-800">
-                                <div class="text-center font-bold border-b-4 double-border border-black pb-4 mb-8">
-                                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-2">
-                                        <div class="w-14 h-16 bg-yellow-400/20 grayscale opacity-50 flex items-center justify-center border border-black/20 text-[8px] shrink-0">LOGO</div>
-                                        <div>
-                                            <div class="text-lg tracking-widest">PEMERINTAH PROVINSI KALIMANTAN TIMUR</div>
-                                            <div class="text-xl sm:text-2xl tracking-wide">DINAS KOMUNIKASI DAN INFORMATIKA</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-8 overflow-x-auto">
-                                    <table class="w-full min-w-[300px]">
-                                        <tbody>
-                                            <tr><td class="w-20 align-top">Nomor</td><td id="preview-nomor" class="align-top">: {{ $submission->nomor_surat ?: '___/___/____' }}</td><td class="text-right align-top hidden sm:table-cell">Samarinda, {{ $submission->created_at->format('d F Y') }}</td></tr>
-                                            <tr><td class="align-top">Perihal</td><td class="align-top">: <b id="preview-perihal">{{ $submission->perihal }}</b></td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <p class="text-justify mb-4 indent-8 leading-loose">{{ $submission->isi_ringkas }}</p>
-
-                                <!-- PERUBAHAN: Tampilkan Data Form Dinamis di Preview -->
-                                @if($submission->form_data && $submission->service->form_fields)
-                                <div class="mb-4 space-y-2">
-                                    @foreach($submission->service->form_fields as $field)
-                                        @if(isset($submission->form_data[$field['name']]))
-                                            <p class="flex">
-                                                <span class="font-semibold mr-2">{{ $field['label'] }}:</span>
-                                                <span>{{ $submission->form_data[$field['name']] }}</span>
-                                            </p>
-                                        @endif
-                                    @endforeach
-                                </div>
+                    <!-- PERUBAHAN: Card Verifikasi Dokumen Preview -->
+                    <div id="document-preview-container" class="document-preview-card @if($submission->status === 'revision' && Auth::user()->role === 'pemohon') with-form @endif">
+                        <div class="document-preview-header">
+                            <h3 class="document-preview-title">
+                                <i data-lucide="file-text" size="20" class="text-[#00A651]"></i>
+                                Verifikasi Dokumen
+                            </h3>
+                            <div id="document-verification-status" class="document-preview-status @if($submission->document_status) {{ $submission->document_status }} @else pending @endif">
+                                @if($submission->document_status === 'approved')
+                                    <i data-lucide="check-circle" size="16"></i>
+                                    <span>Dokumen Benar</span>
+                                @elseif($submission->document_status === 'rejected')
+                                    <i data-lucide="x-circle" size="16"></i>
+                                    <span>Dokumen Salah</span>
+                                @else
+                                    <i data-lucide="clock" size="16"></i>
+                                    <span>Belum Diverifikasi</span>
                                 @endif
-
-                                <div class="mt-12 text-right">
-                                    <p>Hormat Kami,</p>
-                                    <div class="h-20"></div>
-                                    <p class="font-bold">{{ $submission->user->name }}</p>
-                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Detail Requirements dengan Tombol Verifikasi (hanya untuk verifikator) -->
-                    @if(Auth::user()->role === 'verifikator')
-                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
-                            <i data-lucide="file-text" size="20" class="text-[#00A651]"></i> Verifikasi Dokumen Persyaratan
-                        </h3>
-                        <div id="tracking-reqs-list" class="grid gap-3">
-                            @foreach($submission->documents as $doc)
-                            <div class="p-4 border rounded-lg doc-status-{{ $doc->status ?? 'pending' }}" data-doc-id="{{ $doc->id }}" data-doc-status="{{ $doc->status ?? 'pending' }}">
-                                <div class="flex items-center justify-between mb-3">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 
-                                            @if($doc->status === 'approved') bg-green-100 text-green-600
-                                            @elseif($doc->status === 'rejected') bg-red-100 text-red-600
-                                            @else bg-gray-100 text-gray-600
-                                            @endif rounded-full flex items-center justify-center shrink-0">
-                                            @if($doc->status === 'approved')
-                                                <i data-lucide="check" size="14"></i>
-                                            @elseif($doc->status === 'rejected')
-                                                <i data-lucide="x" size="14"></i>
-                                            @else
-                                                <i data-lucide="clock" size="14"></i>
-                                            @endif
-                                        </div>
-                                        <div>
-                                            <span class="text-sm text-gray-700 font-medium">{{ $doc->requirement->name }}</span>
-                                            <p class="text-xs text-gray-500">{{ $doc->file_name }} ({{ number_format($doc->file_size / 1024 / 1024, 2) }} MB)</p>
-                                        </div>
-                                    </div>
-                                    <div class="verification-actions">
-                                        <a href="javascript:void(0);" onclick="openDocumentModal({{ $doc->id }}, '{{ $doc->file_name }}')" class="text-xs font-bold text-[#00A651] bg-[#00A651]/10 px-2 py-1 rounded border border-[#00A651]/20 hover:bg-[#00A651]/20 transition-colors">Lihat</a>
-                                        
-                                        <!-- Tombol Edit (muncul setelah verifikasi) -->
-                                        @if($doc->status === 'approved' || $doc->status === 'rejected')
-                                        <button onclick="toggleEditVerification({{ $doc->id }})" class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded border border-amber-200 hover:bg-amber-100 transition-colors edit-verification-btn">
-                                            {{-- <i data-lucide="edit-2" size="12"></i> --}}
-                                            Edit
-                                        </button>
+                        
+                        <div class="document-preview-body">
+                            <div class="document-preview-wrapper">
+                                <div id="document-preview" class="bg-white rounded-xl shadow-lg w-full flex flex-col items-center p-8 md:p-12 relative overflow-hidden">
+                                    <!-- Status verifikasi untuk preview dokumen -->
+                                    <div id="preview-verification-status" class="document-preview-status-badge @if($submission->document_status) {{ $submission->document_status }} @else pending @endif">
+                                        @if($submission->document_status === 'approved')
+                                            <i data-lucide="check-circle" size="12"></i>
+                                            <span>Disetujui</span>
+                                        @elseif($submission->document_status === 'rejected')
+                                            <i data-lucide="x-circle" size="12"></i>
+                                            <span>Ditolak</span>
+                                        @else
+                                            <i data-lucide="clock" size="12"></i>
+                                            <span>Menunggu Verifikasi</span>
                                         @endif
                                     </div>
-                                </div>
-                                
-                                @if($doc->notes)
-                                    <div class="mb-3 p-2 bg-gray-50 rounded text-xs text-gray-600">
-                                        <strong>Catatan:</strong> {{ $doc->notes }}
+                                    
+                                    <div class="w-full text-[12px] leading-relaxed relative font-serif text-gray-800">
+                                        <div class="text-center font-bold border-b-4 double-border border-black pb-4 mb-8">
+                                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-2">
+                                                <div class="w-14 h-16 bg-yellow-400/20 grayscale opacity-50 flex items-center justify-center border border-black/20 text-[8px] shrink-0">LOGO</div>
+                                                <div>
+                                                    <div class="text-lg tracking-widest">PEMERINTAH PROVINSI KALIMANTAN TIMUR</div>
+                                                    <div class="text-xl sm:text-2xl tracking-wide">DINAS KOMUNIKASI DAN INFORMATIKA</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-8 overflow-x-auto">
+                                            <table class="w-full min-w-[300px]">
+                                                <tbody>
+                                                    <tr><td class="w-20 align-top">Nomor</td><td id="preview-nomor" class="align-top">: {{ $submission->nomor_surat ?: '___/___/____' }}</td><td class="text-right align-top hidden sm:table-cell">Samarinda, {{ $submission->created_at->format('d F Y') }}</td></tr>
+                                                    <tr><td class="align-top">Perihal</td><td class="align-top">: <b id="preview-perihal">{{ $submission->perihal }}</b></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p class="text-justify mb-4 indent-8 leading-loose">{{ $submission->isi_ringkas }}</p>
+
+                                        <!-- Tampilkan Data Form Dinamis di Preview -->
+                                        @if($submission->form_data && $submission->service->form_fields)
+                                        <div class="mb-4 space-y-2">
+                                            @foreach($submission->service->form_fields as $field)
+                                                @if(isset($submission->form_data[$field['name']]))
+                                                    <p class="flex">
+                                                        <span class="font-semibold mr-2">{{ $field['label'] }}:</span>
+                                                        <span>{{ $submission->form_data[$field['name']] }}</span>
+                                                    </p>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        @endif
+
+                                        <div class="mt-12 text-right">
+                                            <p>Hormat Kami,</p>
+                                            <div class="h-20"></div>
+                                            <p class="font-bold">{{ $submission->user->name }}</p>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Catatan Verifikasi -->
+                            <div id="document-verification-note" class="verification-note @if($submission->document_status === 'rejected') error @else info @endif">
+                                @if($submission->document_status === 'rejected')
+                                    <p><strong>Alasan:</strong> {{ $submission->document_rejection_reason ?? 'Tidak ada alasan yang dicatat.' }}</p>
+                                @else
+                                    <p>Verifikator perlu memeriksa dokumen ini dan menentukan apakah sudah benar atau masih perlu diperbaiki.</p>
                                 @endif
-                                
-                                <!-- PERUBAHAN: Tombol Verifikasi yang lebih kecil dan di sebelah kanan -->
-                                <div id="verification-buttons-{{ $doc->id }}" class="verification-buttons" style="@if($doc->status === 'approved' || $doc->status === 'rejected') display: none; @endif">
-                                    <button onclick="updateDocumentStatus({{ $doc->id }}, 'approved')" class="verify-btn approve">
-                                        <i data-lucide="check" size="12"></i> Acc
-                                    </button>
-                                    <button onclick="showRejectForm({{ $doc->id }})" class="verify-btn reject">
-                                        <i data-lucide="x" size="12"></i> Salah
+                            </div>
+
+                            <!-- PERUBAHAN: Section Aksi Verifikasi di Bagian Bawah Card -->
+                            @if(Auth::user()->role === 'verifikator' && $submission->status !== 'signed')
+                            <div class="verification-actions-section">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h1 class="verification-actions-title m-0">Apakah dokumen ini sudah benar?</h1>
+                                    
+                                    <!-- Tombol Edit, selalu ada di kanan. Status visibility diatur oleh JS -->
+                                    <button id="document-edit-btn" onclick="toggleDocumentEditVerification()" class="btn bg-amber-600 text-white hover:bg-amber-700 flex-1 max-w-[150px] @if($submission->document_status !== 'approved' && $submission->document_status !== 'rejected') hidden @endif">
+                                        <i data-lucide="edit-3" size="16"></i>
+                                        Edit Verifikasi
                                     </button>
                                 </div>
+                                    
+                                <!-- Container untuk tombol Verifikasi, posisinya diatur oleh JS -->
+                                <div id="document-verification-buttons" class="verification-actions-buttons @if($submission->document_status === 'approved' || $submission->document_status === 'rejected') hidden @endif">
+                                    @if($submission->document_status !== 'approved')
+                                    <button id="document-approve-btn" onclick="updateDocumentStatusBottom('approved')" class="btn btn-primary flex-1">
+                                        <i data-lucide="check" size="16"></i>
+                                        Dokumen Benar
+                                    </button>
+                                    @endif
+                                    
+                                    @if($submission->document_status !== 'rejected')
+                                    <button id="document-reject-btn" onclick="showDocumentRejectForm()" class="btn bg-red-600 text-white hover:bg-red-700 flex-1">
+                                        <i data-lucide="x" size="16"></i>
+                                        Dokumen Salah
+                                    </button>
+                                    @endif
+                                </div>
                                 
-                                <div id="reject-form-{{ $doc->id }}" class="hidden mt-3 p-3 bg-red-50 rounded">
-                                    <textarea id="reject-notes-{{ $doc->id }}" class="w-full p-2 border border-red-200 rounded text-xs" rows="2" placeholder="Alasan penolakan..."></textarea>
-                                    <div id="reject-error-{{ $doc->id }}" class="reject-required-error hidden">
-                                        <i data-lucide="alert-circle" size="12"></i> Alasan penolakan wajib diisi
+                                <!-- Form untuk alasan penolakan dokumen -->
+                                <div id="document-reject-form" class="verification-reason-form hidden">
+                                    <div class="form-label">Alasan kenapa dokumen ini salah <span class="text-red-500">*</span></div>
+                                    <textarea id="document-rejection-reason" class="form-input form-textarea" rows="3" placeholder="Jelaskan alasan kenapa dokumen ini salah..."></textarea>
+                                    <div id="document-reject-error" class="reject-required-error hidden">
+                                        <i data-lucide="alert-circle" size="14"></i>
+                                        Alasan penolakan wajib diisi
                                     </div>
-                                    <div class="flex gap-2 mt-2">
-                                        <button onclick="updateDocumentStatus({{ $doc->id }}, 'rejected')" class="flex-1 px-3 py-1.5 bg-red-600 text-white rounded text-xs font-medium hover:bg-red-700 transition-colors">
+                                    <div class="flex gap-2 mt-3">
+                                        <button onclick="confirmDocumentRejection()" class="btn bg-red-600 text-white hover:bg-red-700 flex-1">
                                             Simpan
                                         </button>
-                                        <button onclick="hideRejectForm({{ $doc->id }})" class="flex-1 px-3 py-1.5 bg-gray-200 text-gray-700 rounded text-xs font-medium hover:bg-gray-300 transition-colors">
+                                        <button onclick="hideDocumentRejectForm()" class="btn bg-gray-200 text-gray-700 hover:bg-gray-300 flex-1">
                                             Batal
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @endif
                         </div>
                     </div>
-                    @else
-                    <!-- Detail Requirements untuk Pemohon -->
-                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
-                            <i data-lucide="file-text" size="20" class="text-[#00A651]"></i> Detail Dokumen Persyaratan
-                        </h3>
-                        <div id="tracking-reqs-list" class="grid gap-3">
-                            @foreach($submission->documents as $doc)
-                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 
-                                        @if($doc->status === 'approved') bg-green-100 text-green-600
-                                        @elseif($doc->status === 'rejected') bg-red-100 text-red-600
-                                        @else bg-gray-100 text-gray-600
-                                        @endif rounded-full flex items-center justify-center shrink-0">
-                                        @if($doc->status === 'approved')
-                                            <i data-lucide="check" size="14"></i>
-                                        @elseif($doc->status === 'rejected')
-                                            <i data-lucide="x" size="14"></i>
-                                        @else
-                                            <i data-lucide="clock" size="14"></i>
-                                        @endif
-                                    </div>
-                                    <div>
-                                        <span class="text-sm text-gray-700 font-medium">{{ $doc->requirement->name }}</span>
-                                        <p class="text-xs text-gray-500">{{ $doc->file_name }} ({{ number_format($doc->file_size / 1024 / 1024, 2) }} MB)</p>
-                                        @if($doc->status === 'approved')
-                                            <p class="text-xs text-green-600 mt-1">Status: Disetujui</p>
-                                        @elseif($doc->status === 'rejected')
-                                            <p class="text-xs text-red-600 mt-1">Status: Perlu Revisi</p>
-                                            @if($doc->notes)
-                                                <p class="text-xs text-gray-500">Catatan: {{ $doc->notes }}</p>
-                                            @endif
-                                        @else
-                                            <p class="text-xs text-gray-500 mt-1">Status: Menunggu Verifikasi</p>
-                                        @endif
-                                    </div>
-                                </div>
-                                <!-- PERBAIKAN: Mengganti $existingDoc dengan $doc -->
-                                <a href="javascript:void(0);" onclick="openDocumentModal({{ $doc->id }}, '{{ $doc->file_name }}')" class="text-xs font-bold text-[#00A651] bg-[#00A651]/10 px-2 py-1 rounded border border-[#00A651]/20 hover:bg-[#00A651]/20 transition-colors">Lihat</a>
+
+                    <!-- PERUBAHAN: Card Dokumen Persyaratan -->
+                    <div class="requirements-card">
+                        <div class="requirements-header">
+                            <h3 class="requirements-title">
+                                <i data-lucide="file-text" size="20" class="text-[#00A651]"></i>
+                                Dokumen Persyaratan
+                            </h3>
+                            <div class="document-preview-status @if($submission->documents->where('status', 'pending')->count() > 0) pending @elseif($submission->documents->where('status', 'rejected')->count() > 0) rejected @else approved @endif">
+                                @if($submission->documents->where('status', 'pending')->count() > 0)
+                                    <i data-lucide="clock" size="16"></i>
+                                    <span>Menunggu Verifikasi</span>
+                                @elseif($submission->documents->where('status', 'rejected')->count() > 0)
+                                    <i data-lucide="x-circle" size="16"></i>
+                                    <span>Ada yang Ditolak</span>
+                                @else
+                                    <i data-lucide="check-circle" size="16"></i>
+                                    <span>Semua Disetujui</span>
+                                @endif
                             </div>
-                            @endforeach
+                        </div>
+                        
+                        <div class="requirements-body">
+                            <div class="requirements-list">
+                                @foreach($submission->documents as $doc)
+                                <div class="requirement-item" data-doc-id="{{ $doc->id }}" data-doc-status="{{ $doc->status ?? 'pending' }}">
+                                    <div class="requirement-header">
+                                        <div class="requirement-info">
+                                            <div class="requirement-status-icon @if($doc->status === 'approved') approved @elseif($doc->status === 'rejected') rejected @else pending @endif">
+                                                @if($doc->status === 'approved')
+                                                    <i data-lucide="check" size="16"></i>
+                                                @elseif($doc->status === 'rejected')
+                                                    <i data-lucide="x" size="16"></i>
+                                                @else
+                                                    <i data-lucide="clock" size="16"></i>
+                                                @endif
+                                            </div>
+                                            <div class="requirement-details">
+                                                <div class="requirement-name">{{ $doc->requirement->name }}</div>
+                                                <div class="requirement-file-info">{{ $doc->file_name }} ({{ number_format($doc->file_size / 1024 / 1024, 2) }} MB)</div>
+                                            </div>
+                                        </div>
+                                        <div class="requirement-actions">
+                                            <a href="javascript:void(0);" onclick="openDocumentModal({{ $doc->id }}, '{{ $doc->file_name }}')" class="text-xs font-bold text-[#00A651] bg-[#00A651]/10 px-2 py-1 rounded border border-[#00A651]/20 hover:bg-[#00A651]/20 transition-colors">Lihat</a>
+                                            
+                                            <!-- Tombol Edit (muncul setelah verifikasi) -->
+                                            @if(Auth::user()->role === 'verifikator' && ($doc->status === 'approved' || $doc->status === 'rejected'))
+                                            <button onclick="toggleEditVerification({{ $doc->id }})" class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded border border-amber-200 hover:bg-amber-100 transition-colors edit-verification-btn">
+                                                Edit
+                                            </button>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    
+                                    @if($doc->notes)
+                                        <div class="requirement-note @if($doc->status === 'rejected') rejected @endif">
+                                            <strong>Catatan:</strong> {{ $doc->notes }}
+                                        </div>
+                                    @endif
+                                    
+                                    <!-- PERUBAHAN: Tombol Verifikasi untuk Verifikator -->
+                                    @if(Auth::user()->role === 'verifikator')
+                                    <div id="requirement-verification-{{ $doc->id }}" class="requirement-verification" @if($doc->status === 'approved' || $doc->status === 'rejected') style="display: none;" @endif>
+                                        <button onclick="updateDocumentStatus({{ $doc->id }}, 'approved')" class="verify-btn approve">
+                                            <i data-lucide="check" size="12"></i> Benar
+                                        </button>
+                                        <button onclick="showRejectForm({{ $doc->id }})" class="verify-btn reject">
+                                            <i data-lucide="x" size="12"></i> Salah
+                                        </button>
+                                    </div>
+                                    
+                                    <div id="reject-form-{{ $doc->id }}" class="verification-reason-form hidden">
+                                        <div class="form-label">Alasan penolakan <span class="text-red-500">*</span></div>
+                                        <textarea id="reject-notes-{{ $doc->id }}" class="form-input form-textarea" rows="2" placeholder="Jelaskan alasan penolakan..."></textarea>
+                                        <div id="reject-error-{{ $doc->id }}" class="reject-required-error hidden">
+                                            <i data-lucide="alert-circle" size="12"></i> Alasan penolakan wajib diisi
+                                        </div>
+                                        <div class="flex gap-2 mt-2">
+                                            <button onclick="updateDocumentStatus({{ $doc->id }}, 'rejected')" class="btn bg-red-600 text-white hover:bg-red-700 flex-1 text-sm">
+                                                Simpan
+                                            </button>
+                                            <button onclick="hideRejectForm({{ $doc->id }})" class="btn bg-gray-200 text-gray-700 hover:bg-gray-300 flex-1 text-sm">
+                                                Batal
+                                            </button>
+                                        </div>
+                                    </div>
+                                    @endif
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                    @endif
-                    
+
                     <!-- Verifikator Actions (hanya untuk verifikator) -->
                     @if(Auth::user()->role === 'verifikator' && $submission->status !== 'signed')
+                    @php
+                        // Hitung status dokumen secara server-side untuk initial state
+                        $allDocsApproved = $submission->allDocumentsApproved();
+                        $hasRejectedDocs = $submission->hasAnyRejectedDocument();
+                    @endphp
+
                     <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
                         <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
                             <i data-lucide="check-square" size="20" class="text-[#00A651]"></i> Aksi Verifikasi
@@ -860,6 +1233,7 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Status Verifikasi</label>
                                     <div class="space-y-2">
+                                        <!-- Opsi 1: Proses Verifikasi -->
                                         <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 {{ $submission->status === 'process' ? 'border-blue-500 bg-blue-50' : 'border-gray-200' }}">
                                             <input type="radio" name="status" value="process" {{ $submission->status === 'process' ? 'checked' : '' }} class="mr-3" onchange="handleStatusChange(this.value)">
                                             <div>
@@ -868,24 +1242,30 @@
                                             </div>
                                         </label>
                                         
-                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 {{ $submission->status === 'revision' ? 'border-yellow-500 bg-yellow-50' : 'border-gray-200' }}">
-                                            <input type="radio" name="status" value="revision" {{ $submission->status === 'revision' ? 'checked' : '' }} class="mr-3" onchange="handleStatusChange(this.value)">
+                                        <!-- Opsi 2: Perlu Revisi -->
+                                        <!-- Disable jika SEMUA dokumen sudah benar (karena tidak masuk akal revisi jika sudah benar) -->
+                                        <label id="revision-option" class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 {{ $submission->status === 'revision' ? 'border-yellow-500 bg-yellow-50' : 'border-gray-200' }} {{ $allDocsApproved ? 'disabled-option' : '' }}">
+                                            <input type="radio" name="status" value="revision" {{ $submission->status === 'revision' ? 'checked' : '' }} class="mr-3" onchange="handleStatusChange(this.value)" {{ $allDocsApproved ? 'disabled' : '' }}>
                                             <div>
                                                 <p class="font-medium">Perlu Revisi</p>
                                                 <p class="text-xs text-gray-500">Dokumen perlu diperbaiki</p>
                                             </div>
                                         </label>
                                         
-                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 {{ $submission->status === 'rejected' ? 'border-red-500 bg-red-50' : 'border-gray-200' }}">
-                                            <input type="radio" name="status" value="rejected" {{ $submission->status === 'rejected' ? 'checked' : '' }} class="mr-3" onchange="handleStatusChange(this.value)">
+                                        <!-- Opsi 3: Tolak Pengajuan -->
+                                        <!-- Disable jika SEMUA dokumen sudah benar -->
+                                        <label id="rejected-option" class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 {{ $submission->status === 'rejected' ? 'border-red-500 bg-red-50' : 'border-gray-200' }} {{ $allDocsApproved ? 'disabled-option' : '' }}">
+                                            <input type="radio" name="status" value="rejected" {{ $submission->status === 'rejected' ? 'checked' : '' }} class="mr-3" onchange="handleStatusChange(this.value)" {{ $allDocsApproved ? 'disabled' : '' }}>
                                             <div>
                                                 <p class="font-medium">Tolak Pengajuan</p>
                                                 <p class="text-xs text-gray-500">Menolak seluruh pengajuan</p>
                                             </div>
                                         </label>
                                         
-                                        <label id="verified-option" class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 {{ $submission->status === 'signed' ? 'border-green-500 bg-green-50' : 'border-gray-200' }}">
-                                            <input type="radio" name="status" value="signed" {{ $submission->status === 'signed' ? 'checked' : '' }} class="mr-3" onchange="handleStatusChange(this.value)">
+                                        <!-- Opsi 4: Terverifikasi -->
+                                        <!-- Disable jika ADA dokumen yang ditolak atau BELUM semua disetujui -->
+                                        <label id="verified-option" class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 {{ $submission->status === 'signed' ? 'border-green-500 bg-green-50' : 'border-gray-200' }} {{ !$allDocsApproved ? 'disabled-option' : '' }}">
+                                            <input type="radio" name="status" value="signed" {{ $submission->status === 'signed' ? 'checked' : '' }} class="mr-3" onchange="handleStatusChange(this.value)" {{ !$allDocsApproved ? 'disabled' : '' }}>
                                             <div>
                                                 <p class="font-medium">Terverifikasi</p>
                                                 <p class="text-xs text-gray-500">Dokumen telah disetujui</p>
@@ -1149,6 +1529,27 @@
     </div>
 </div>
 
+<!-- Document Preview Reject Modal -->
+<div id="preview-reject-modal" class="fixed inset-0 z-50 bg-black/50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
+        <div class="text-center">
+            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="x-circle" size="32" class="text-red-600"></i>
+            </div>
+            <h3 class="font-bold text-lg text-gray-800 mb-2">Konfirmasi Penolakan Dokumen</h3>
+            <p class="text-sm text-gray-600 mb-4">Apakah Anda yakin ingin menolak dokumen ini? Dokumen akan ditandai sebagai tidak sesuai.</p>
+            <div class="flex gap-3">
+                <button onclick="confirmPreviewRejection()" class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors">
+                    Ya, Tolak
+                </button>
+                <button onclick="closePreviewRejectModal()" class="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition-colors">
+                    Batal
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @push('scripts')
@@ -1159,72 +1560,471 @@
 
 <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            lucide.createIcons();
-        }, 100);
-        
-        // Check if there are any rejected documents and disable verified option
-        checkDocumentStatuses();
-        
-        // Initialize status change handlers
-        const statusRadios = document.querySelectorAll('input[name="status"]');
-        statusRadios.forEach(radio => {
-            if (radio.checked) {
-                handleStatusChange(radio.value);
-            }
-        });
-        
-        // Check if revision form is open and validate button state
-        if (document.getElementById('revision-form') && !document.getElementById('revision-form').classList.contains('hidden')) {
-            checkRevisionFormState();
+    
+    // --- FUNGSI UTAMA: HANDLER SUBMIT FORM REVISI ---
+    function handleRevisionSubmit(formElement) {
+        // Validasi form terlebih dahulu
+        if (!validateRevisionForm()) {
+            showErrorModal('Silakan periksa kembali formulir Anda. Pastikan semua field yang wajib diisi dengan benar.');
+            return;
         }
-    });
+
+        const submitBtn = formElement.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        // Tampilkan loading di tombol
+        submitBtn.innerHTML = '<i data-lucide="loader-2" class="animate-spin mr-2" size="16"></i> Mengirim...';
+        submitBtn.disabled = true;
+        lucide.createIcons();
+        
+        const formData = new FormData(formElement);
+        
+        // Handle format tanggal jika ada
+        const dateInput = document.getElementById('revision-tanggal_surat');
+        if (dateInput && dateInput.value) {
+            const dateValue = dateInput.value;
+            const parts = dateValue.split('/');
+            if (parts.length === 3) {
+                const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+                formData.set('tanggal_surat', formattedDate);
+            }
+        }
+        
+        fetch(formElement.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json' // Penting: Minta server mengembalikan JSON
+            }
+        })
+        .then(response => {
+            // Cek apakah response adalah JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                // Jika bukan JSON, mungkin ada error server (HTML), tangani sebagai text
+                return response.text().then(text => {
+                    throw new Error('Server returned non-JSON response. Check server logs.');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                // Sembunyikan form
+                document.getElementById('revision-form').classList.add('hidden');
+                
+                // Tampilkan modal sukses
+                document.getElementById('success-modal').classList.remove('hidden');
+                lucide.createIcons();
+                
+                // Opsional: Reload setelah beberapa detik atau saat tombol OK diklik
+                // Di sini kita biarkan pengguna klik OK, lalu reload di fungsi closeSuccessModal()
+            } else {
+                let errorMessage = data.message || 'Terjadi kesalahan saat mengirim revisi. Silakan coba lagi.';
+                if (data.errors) {
+                    const firstErrorKey = Object.keys(data.errors)[0];
+                    errorMessage = data.errors[firstErrorKey][0];
+                }
+                showErrorModal(errorMessage);
+                
+                // Kembalikan tombol ke keadaan semula
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                lucide.createIcons();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showErrorModal('Terjadi kesalahan jaringan atau server. Silakan coba lagi.');
+            
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            lucide.createIcons();
+        });
+    }
+
+    // --- FUNGSI UNTUK VERIFIKASI PREVIEW DOKUMEN ---
+
+    function updateDocumentStatusBottom(status) {
+        const reasonTextarea = document.getElementById('document-rejection-reason');
+        
+        let reason = null;
+        if (status === 'rejected') {
+            reason = reasonTextarea.value.trim() || null;
+        }
+
+        fetch(`/verifikator/submission/{{ $submission->id }}/update-document-status`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({
+                status: status,
+                document_rejection_reason: reason
+            })
+        })
+        .then(response => {
+            const contentType = response.headers.get('content-type');
+            if (!response.ok) {
+                if (contentType && contentType.includes('application/json')) {
+                    return response.json().then(err => { throw new Error(err.message || 'Terjadi kesalahan server.'); });
+                } else {
+                    return response.text().then(text => { throw new Error('Server error: ' + response.status); });
+                }
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                updateDocumentVerificationUI(data.document_status, data.reason);
+                checkDocumentStatuses();
+                
+                const modal = document.getElementById('doc-status-modal');
+                const iconContainer = document.getElementById('doc-status-icon');
+                const titleElement = document.getElementById('doc-status-title');
+                const messageElement = document.getElementById('doc-status-message');
+                
+                if (data.document_status === 'approved') {
+                    iconContainer.innerHTML = '<i data-lucide="check-circle" size="32" class="text-green-600"></i>';
+                    titleElement.textContent = 'Dokumen Disetujui';
+                    messageElement.textContent = 'Dokumen telah disetujui.';
+                } else {
+                    iconContainer.innerHTML = '<i data-lucide="x-circle" size="32" class="text-red-600"></i>';
+                    titleElement.textContent = 'Dokumen Ditolak';
+                    messageElement.textContent = 'Dokumen ditolak dan perlu direvisi.';
+                }
+                
+                modal.classList.remove('hidden');
+                lucide.createIcons();
+            } else {
+                showErrorModal(data.message || 'Gagal memperbarui status dokumen.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showErrorModal(error.message || 'Terjadi kesalahan saat memperbarui status dokumen.');
+        });
+    }
+
+    function updateDocumentVerificationUI(status, reason) {
+        const verificationButtonsContainer = document.getElementById('document-verification-buttons');
+        const editBtn = document.getElementById('document-edit-btn');
+        const noteDiv = document.getElementById('document-verification-note');
+        const statusBadge = document.getElementById('document-verification-status');
+        const previewStatusBadge = document.getElementById('preview-verification-status');
+
+        if (statusBadge) {
+            statusBadge.className = `document-preview-status ${status}`;
+            statusBadge.innerHTML = status === 'approved' 
+                ? '<i data-lucide="check-circle" size="16"></i><span>Dokumen Benar</span>'
+                : '<i data-lucide="x-circle" size="16"></i><span>Dokumen Salah</span>';
+        }
+        if (previewStatusBadge) {
+            previewStatusBadge.className = `document-preview-status-badge ${status}`;
+            previewStatusBadge.innerHTML = status === 'approved'
+                ? '<i data-lucide="check-circle" size="12"></i><span>Disetujui</span>'
+                : '<i data-lucide="x-circle" size="12"></i><span>Ditolak</span>';
+        }
+
+        verificationButtonsContainer.innerHTML = '';
+        hideDocumentRejectForm();
+
+        if (status === 'approved') {
+            verificationButtonsContainer.classList.add('hidden');
+            editBtn.classList.remove('hidden');
+            editBtn.innerHTML = '<i data-lucide="edit-3" size="16"></i> Edit Verifikasi';
+            editBtn.className = 'btn bg-amber-600 text-white hover:bg-amber-700 flex-1 max-w-[150px]';
+            noteDiv.className = 'verification-note info'; // Diubah ke info karena sukses
+            noteDiv.innerHTML = '<p>Dokumen telah disetujui dan tidak perlu perbaikan.</p>';
+        } else if (status === 'rejected') {
+            verificationButtonsContainer.classList.add('hidden');
+            editBtn.classList.remove('hidden');
+            editBtn.innerHTML = '<i data-lucide="edit-3" size="16"></i> Edit Verifikasi';
+            editBtn.className = 'btn bg-amber-600 text-white hover:bg-amber-700 flex-1 max-w-[150px]';
+            noteDiv.className = 'verification-note error';
+            noteDiv.innerHTML = `<p><strong>Alasan:</strong> ${reason || 'Tidak ada alasan yang dicatat.'}</p>`;
+        }
+        lucide.createIcons();
+    }
+
+    function toggleDocumentEditVerification() {
+        const verificationButtonsContainer = document.getElementById('document-verification-buttons');
+        const editBtn = document.getElementById('document-edit-btn');
+        const isEditMode = editBtn.getAttribute('data-edit-mode') === 'true';
+
+        if (!isEditMode) {
+            verificationButtonsContainer.classList.remove('hidden');
+            verificationButtonsContainer.innerHTML = `
+                <button id="document-approve-btn" onclick="updateDocumentStatusBottom('approved')" class="btn btn-primary flex-1">
+                    <i data-lucide="check" size="16"></i>
+                    Dokumen Benar
+                </button>
+                <button id="document-reject-btn" onclick="showDocumentRejectForm()" class="btn bg-red-600 text-white hover:bg-red-700 flex-1">
+                    <i data-lucide="x" size="16"></i>
+                    Dokumen Salah
+                </button>
+            `;
+            editBtn.innerHTML = '<i data-lucide="x" size="16"></i> Batal';
+            editBtn.classList.remove('bg-amber-600', 'hover:bg-amber-700');
+            editBtn.classList.add('bg-gray-500', 'hover:bg-gray-600');
+            editBtn.setAttribute('data-edit-mode', 'true');
+        } else {
+            const currentStatus = document.getElementById('document-verification-status').classList.contains('approved') ? 'approved' : 'rejected';
+            const noteDiv = document.getElementById('document-verification-note');
+            let currentReason = '';
+            
+            if (noteDiv && noteDiv.querySelector('strong')) {
+                const reasonText = noteDiv.textContent;
+                const reasonMatch = reasonText.match(/Alasan:\s*(.+)/);
+                if (reasonMatch && reasonMatch[1]) currentReason = reasonMatch[1].trim();
+            }
+            
+            if (currentStatus === 'approved') {
+                verificationButtonsContainer.classList.add('hidden');
+                verificationButtonsContainer.innerHTML = '';
+                noteDiv.className = 'verification-note info';
+                noteDiv.innerHTML = '<p>Dokumen telah disetujui dan tidak perlu perbaikan.</p>';
+            } else {
+                verificationButtonsContainer.classList.add('hidden');
+                verificationButtonsContainer.innerHTML = '';
+                noteDiv.className = 'verification-note error';
+                noteDiv.innerHTML = `<p><strong>Alasan:</strong> ${currentReason || 'Tidak ada alasan.'}</p>`;
+            }
+            
+            editBtn.innerHTML = '<i data-lucide="edit-3" size="16"></i> Edit Verifikasi';
+            editBtn.classList.remove('bg-gray-500', 'hover:bg-gray-600');
+            editBtn.classList.add('bg-amber-600', 'hover:bg-amber-700');
+            editBtn.setAttribute('data-edit-mode', 'false');
+        }
+        lucide.createIcons();
+    }
+
+    function showDocumentRejectForm() {
+        document.getElementById('document-reject-form').classList.remove('hidden');
+        document.getElementById('document-rejection-reason').focus();
+        lucide.createIcons();
+    }
+
+    function hideDocumentRejectForm() {
+        document.getElementById('document-reject-form').classList.add('hidden');
+        document.getElementById('document-rejection-reason').value = '';
+        document.getElementById('document-reject-error').classList.add('hidden');
+        lucide.createIcons();
+    }
+
+    function confirmDocumentRejection() {
+        const reasonTextarea = document.getElementById('document-rejection-reason');
+        const errorElement = document.getElementById('document-reject-error');
+        
+        if (!reasonTextarea.value.trim()) {
+            errorElement.classList.remove('hidden');
+            reasonTextarea.classList.add('border-red-500');
+            lucide.createIcons();
+            return;
+        }
+        
+        const reason = reasonTextarea.value.trim();
+        
+        fetch(`/verifikator/submission/{{ $submission->id }}/update-document-status`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({
+                status: 'rejected',
+                document_rejection_reason: reason
+            })
+        })
+        .then(response => {
+            const contentType = response.headers.get('content-type');
+            if (!response.ok) {
+                if (contentType && contentType.includes('application/json')) {
+                    return response.json().then(err => { throw new Error(err.message || 'Error.'); });
+                } else {
+                    return response.text().then(text => { throw new Error('Server error: ' + response.status); });
+                }
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                updateDocumentVerificationUI('rejected', data.reason);
+                checkDocumentStatuses();
+                
+                const modal = document.getElementById('doc-status-modal');
+                const iconContainer = document.getElementById('doc-status-icon');
+                const titleElement = document.getElementById('doc-status-title');
+                const messageElement = document.getElementById('doc-status-message');
+                
+                iconContainer.innerHTML = '<i data-lucide="x-circle" size="32" class="text-red-600"></i>';
+                titleElement.textContent = 'Dokumen Ditolak';
+                messageElement.textContent = 'Dokumen ditolak dan perlu direvisi.';
+                
+                modal.classList.remove('hidden');
+                lucide.createIcons();
+            } else {
+                showErrorModal('Gagal memperbarui status: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showErrorModal(error.message);
+        });
+    }
+
+    // --- FUNGSI HELPER LAINNYA ---
 
     function checkDocumentStatuses() {
-        const documents = document.querySelectorAll('#tracking-reqs-list > div[data-doc-status]');
+        const documents = document.querySelectorAll('.requirement-item[data-doc-status]');
         let hasRejected = false;
-        let allVerified = true;
+        let allApproved = true;
         let hasPending = false;
         
+        // 1. Cek status dokumen persyaratan
         documents.forEach(doc => {
             const status = doc.getAttribute('data-doc-status');
             if (status === 'rejected') {
                 hasRejected = true;
+                allApproved = false;
             }
-            // PERUBAHAN: Memperbaiki logika verifikasi - dokumen dianggap sudah diverifikasi jika statusnya approved atau rejected
             if (status === 'pending') {
-                allVerified = false;
+                allApproved = false;
                 hasPending = true;
+            }
+            if (status !== 'approved') {
+                allApproved = false;
             }
         });
         
-        // Disable verified option if there are rejected documents
-        const verifiedOption = document.getElementById('verified-option');
-        if (hasRejected && verifiedOption) {
-            verifiedOption.classList.add('disabled-option');
-            verifiedOption.querySelector('input').disabled = true;
-        } else if (verifiedOption) {
-            verifiedOption.classList.remove('disabled-option');
-            verifiedOption.querySelector('input').disabled = false;
+        // 2. Cek status dokumen preview
+        const documentPreviewStatus = document.getElementById('document-verification-status');
+        const previewStatus = documentPreviewStatus ? 
+            (documentPreviewStatus.classList.contains('approved') ? 'approved' : 
+            (documentPreviewStatus.classList.contains('rejected') ? 'rejected' : 'pending')) : 'pending';
+        
+        if (previewStatus === 'rejected') {
+            hasRejected = true;
+            allApproved = false;
+        } else if (previewStatus !== 'approved') {
+            allApproved = false;
+            hasPending = true;
         }
         
-        // Show/hide verification warning based on document verification status
+        // 3. Ambil elemen UI
+        const verifiedOption = document.getElementById('verified-option');
+        const verifiedRadio = verifiedOption ? verifiedOption.querySelector('input') : null;
+        
+        const revisionOption = document.getElementById('revision-option');
+        const revisionRadio = revisionOption ? revisionOption.querySelector('input') : null;
+        
+        const rejectedOption = document.getElementById('rejected-option');
+        const rejectedRadio = rejectedOption ? rejectedOption.querySelector('input') : null;
+        
+        const processRadio = document.querySelector('input[name="status"][value="process"]');
+        
+        // 4. Logika Penentuan State
+        
+        // KASUS A: Ada dokumen yang ditolak (Rejected)
+        if (hasRejected) {
+            // Disable "Terverifikasi"
+            if (verifiedOption) {
+                verifiedOption.classList.add('disabled-option');
+                if(verifiedRadio) verifiedRadio.disabled = true;
+            }
+            
+            // Enable "Perlu Revisi" dan "Tolak"
+            if (revisionOption) {
+                revisionOption.classList.remove('disabled-option');
+                if(revisionRadio) revisionRadio.disabled = false;
+            }
+            if (rejectedOption) {
+                rejectedOption.classList.remove('disabled-option');
+                if(rejectedRadio) rejectedRadio.disabled = false;
+            }
+            
+            // AUTO-SWITCH: Jika "Terverifikasi" sedang terpilih, pindahkan ke "Perlu Revisi"
+            if (verifiedRadio && verifiedRadio.checked) {
+                verifiedRadio.checked = false;
+                if (revisionRadio) {
+                    revisionRadio.checked = true;
+                    handleStatusChange('revision'); // Trigger UI change
+                }
+            }
+        } 
+        // KASUS B: Semua dokumen sudah disetujui (All Approved)
+        else if (allApproved) {
+            // Enable "Terverifikasi"
+            if (verifiedOption) {
+                verifiedOption.classList.remove('disabled-option');
+                if(verifiedRadio) verifiedRadio.disabled = false;
+            }
+            
+            // Disable "Perlu Revisi" dan "Tolak"
+            if (revisionOption) {
+                revisionOption.classList.add('disabled-option');
+                if(revisionRadio) revisionRadio.disabled = true;
+            }
+            if (rejectedOption) {
+                rejectedOption.classList.add('disabled-option');
+                if(rejectedRadio) rejectedRadio.disabled = true;
+            }
+            
+            // AUTO-SWITCH: Jika "Perlu Revisi" terpilih (karena keadaan sebelumnya), pindahkan ke "Terverifikasi"
+            if (revisionRadio && revisionRadio.checked) {
+                revisionRadio.checked = false;
+                if (verifiedRadio) {
+                    verifiedRadio.checked = true;
+                    handleStatusChange('signed'); // Trigger UI change
+                }
+            }
+            // Juga jika "Proses" terpilih, auto pindah ke "Terverifikasi" karena semua sudah benar
+            else if (processRadio && processRadio.checked && !verifiedRadio.checked) {
+                 if (verifiedRadio) {
+                    verifiedRadio.checked = true;
+                    handleStatusChange('signed');
+                }
+            }
+        } 
+        // KASUS C: Masih ada yang pending (belum lengkap / campuran)
+        else {
+            // Disable "Terverifikasi"
+            if (verifiedOption) {
+                verifiedOption.classList.add('disabled-option');
+                if(verifiedRadio) verifiedRadio.disabled = true;
+            }
+            
+            // Enable lainnya
+            if (revisionOption) {
+                revisionOption.classList.remove('disabled-option');
+                if(revisionRadio) revisionRadio.disabled = false;
+            }
+            if (rejectedOption) {
+                rejectedOption.classList.remove('disabled-option');
+                if(rejectedRadio) rejectedRadio.disabled = false;
+            }
+            
+            // AUTO-SWITCH: Jika "Terverifikasi" sedang terpilih, pindahkan ke "Proses" (safe default)
+            if (verifiedRadio && verifiedRadio.checked) {
+                verifiedRadio.checked = false;
+                if (processRadio) {
+                    processRadio.checked = true;
+                    handleStatusChange('process');
+                }
+            }
+        }
+        
+        // 5. Atur Warning dan Tombol Submit (Opsional, sesuai kebutuhan QC)
         const verificationWarning = document.getElementById('verification-warning');
         const submitBtn = document.getElementById('submit-status-btn');
         
-        // PERUBAHAN: Hanya tampilkan peringatan jika ada dokumen yang belum diverifikasi (pending)
         if (hasPending && verificationWarning && submitBtn) {
-            verificationWarning.classList.remove('hidden');
-            submitBtn.classList.add('submit-disabled');
-            submitBtn.disabled = true;
-        } else if (verificationWarning && submitBtn) {
+            // Jika ingin warning muncul saat ada pending: 
+            // verificationWarning.classList.remove('hidden');
+        } else if (verificationWarning) {
             verificationWarning.classList.add('hidden');
-            submitBtn.classList.remove('submit-disabled');
-            submitBtn.disabled = false;
         }
     }
 
@@ -1234,57 +2034,36 @@
         const notesTextarea = document.getElementById('notes');
         
         if (status === 'rejected') {
-            // Show rejection reason and hide notes
             rejectionReasonContainer.classList.remove('hidden');
             notesContainer.classList.add('hidden');
         } else {
-            // Hide rejection reason and show notes
             rejectionReasonContainer.classList.add('hidden');
             notesContainer.classList.remove('hidden');
-            
-            // Update notes template based on status
-            if (status === 'revision') {
-                notesTextarea.value = 'perlu revisi';
-            } else if (status === 'signed') {
-                notesTextarea.value = 'Terverifikasi';
-            } else {
-                notesTextarea.value = '';
-            }
+            if (status === 'revision') notesTextarea.value = 'perlu revisi';
+            else if (status === 'signed') notesTextarea.value = 'Terverifikasi';
+            else notesTextarea.value = '';
         }
     }
 
     function toggleRevisionForm() {
         const form = document.getElementById('revision-form');
+        const documentPreviewContainer = document.getElementById('document-preview-container');
+        
         form.classList.toggle('hidden');
         
         if (!form.classList.contains('hidden')) {
+            documentPreviewContainer.classList.add('with-form');
             setTimeout(() => {
                 lucide.createIcons();
-                
                 flatpickr("#revision-tanggal_surat", {
-                    dateFormat: "d/m/Y",
-                    altInput: true,
-                    altFormat: "j F Y",
-                    locale: {
-                        firstDayOfWeek: 1,
-                        weekdays: { shorthand: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'], longhand: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'], },
-                        months: { shorthand: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'], longhand: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'], },
-                    },
-                    disableMobile: "true",
-                    onChange: function(selectedDates, dateStr, instance) {
-                        const date = selectedDates[0];
-                        if (date) {
-                            const day = date.getDate().toString().padStart(2, '0');
-                            const month = (date.getMonth() + 1).toString().padStart(2, '0');
-                            const year = date.getFullYear();
-                            instance.setDate(`${day}/${month}/${year}`, true);
-                        }
-                    }
+                    dateFormat: "d/m/Y", altInput: true, altFormat: "j F Y",
+                    locale: { firstDayOfWeek: 1, weekdays: { shorthand: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'], longhand: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'] }, months: { shorthand: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'], longhand: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] } },
+                    disableMobile: "true"
                 });
-                
-                // Check revision form state after opening
                 checkRevisionFormState();
             }, 100);
+        } else {
+            documentPreviewContainer.classList.remove('with-form');
         }
     }
 
@@ -1294,59 +2073,35 @@
         const container = event.target.closest('.file-upload-item');
         const button = event.target.previousElementSibling;
         
-        previewDiv.innerHTML = '';
-        previewDiv.classList.remove('active');
+        previewDiv.innerHTML = ''; previewDiv.classList.remove('active');
         
         if (file) {
             if (file.type !== 'application/pdf') {
-                previewDiv.innerHTML = `<div class="flex items-center gap-2 text-red-500">
-                    <i data-lucide="alert-circle" size="14"></i>
-                    <span>File harus berformat PDF.</span>
-                </div>`;
+                previewDiv.innerHTML = '<div class="flex items-center gap-2 text-red-500"><i data-lucide="alert-circle" size="14"></i><span>File harus PDF.</span></div>';
                 previewDiv.classList.add('active');
                 event.target.value = '';
                 lucide.createIcons();
                 return;
             }
-
-            const maxSize = 5 * 1024 * 1024;
-            if (file.size > maxSize) {
-                previewDiv.innerHTML = `<div class="flex items-center gap-2 text-red-500">
-                    <i data-lucide="alert-circle" size="14"></i>
-                    <span>Ukuran file maksimal 5MB.</span>
-                </div>`;
+            if (file.size > 5 * 1024 * 1024) {
+                previewDiv.innerHTML = '<div class="flex items-center gap-2 text-red-500"><i data-lucide="alert-circle" size="14"></i><span>Max 5MB.</span></div>';
                 previewDiv.classList.add('active');
                 event.target.value = '';
                 lucide.createIcons();
                 return;
             }
             
-            const fileSizeKB = (file.size / 1024).toFixed(2);
-            previewDiv.innerHTML = `<div class="flex items-center gap-2 text-green-600">
-                <i data-lucide="check-circle" size="14"></i>
-                <span>File baru akan diunggah: ${file.name} (${fileSizeKB} KB)</span>
-            </div>`;
+            previewDiv.innerHTML = `<div class="flex items-center gap-2 text-green-600"><i data-lucide="check-circle" size="14"></i><span>File baru: ${file.name}</span></div>`;
             previewDiv.classList.add('active');
             
-            if (button.classList.contains('primary')) {
-                button.innerHTML = `<i data-lucide="check" size="16"></i> File Dipilih`;
-            } else if (button.classList.contains('danger')) {
-                button.innerHTML = `<i data-lucide="check" size="16"></i> File Diganti`;
-            }
-            
+            button.innerHTML = button.classList.contains('danger') ? '<i data-lucide="check" size="16"></i> File Diganti' : '<i data-lucide="check" size="16"></i> File Dipilih';
             container.classList.add('border-green-500', 'bg-green-50');
-            
-            // Update data attribute to mark as uploaded
             container.setAttribute('data-file-uploaded', 'true');
-            
             lucide.createIcons();
-            
-            // Check revision form state after file upload
             checkRevisionFormState();
         }
     }
 
-    // PERUBAHAN: Fungsi untuk memeriksa status form revisi
     function checkRevisionFormState() {
         const submitBtn = document.getElementById('submit-revision-btn');
         if (!submitBtn) return;
@@ -1357,25 +2112,73 @@
         fileUploadItems.forEach(item => {
             const docStatus = item.getAttribute('data-doc-status');
             const fileUploaded = item.getAttribute('data-file-uploaded') === 'true';
+            if (docStatus === 'rejected' && !fileUploaded) allRejectedFilesUploaded = false;
+        });
+        
+        if (allRejectedFilesUploaded) {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('bg-gray-400'); submitBtn.classList.add('bg-[#00A651]');
+        } else {
+            submitBtn.disabled = true;
+            submitBtn.classList.remove('bg-[#00A651]'); submitBtn.classList.add('bg-gray-400');
+        }
+    }
+
+    function validateRevisionForm() {
+        const form = document.getElementById('revision-form-submit');
+        const fileInputs = form.querySelectorAll('input[type="file"]');
+        let hasError = false;
+        
+        document.querySelectorAll('.revision-error').forEach(el => el.remove());
+        
+        const perihalInput = document.getElementById('revision-perihal');
+        if (!perihalInput.value.trim()) {
+            showError(perihalInput.parentElement, 'Perihal / Judul wajib diisi');
+            hasError = true;
+        }
+        
+        fileInputs.forEach(input => {
+            const reqId = input.name.match(/\d+/)[0];
+            const isRequired = input.getAttribute('data-required') === 'true';
+            const container = input.closest('.file-upload-item');
+            const hasNewFile = input.files.length > 0;
+            const hasExistingFile = container.textContent.includes('File:');
+            const isRejected = container.getAttribute('data-doc-status') === 'rejected';
             
-            // If document status is rejected and no new file is uploaded, disable button
-            if (docStatus === 'rejected' && !fileUploaded) {
-                allRejectedFilesUploaded = false;
+            if (isRejected && !hasNewFile) {
+                showError(container, 'Dokumen yang ditolak wajib diunggah ulang.');
+                hasError = true;
+            } else if (isRequired && !hasExistingFile && !hasNewFile) {
+                showError(container, 'Dokumen ini wajib diunggah.');
+                hasError = true;
+            }
+        });
+
+        const dynamicFields = @json($submission->service->form_fields ?? []);
+        dynamicFields.forEach(field => {
+            const input = form.querySelector(`[name="form_data[${field.name}]"]`);
+            if (field.is_required && input && !input.value.trim()) {
+                showError(input.closest('.group') || input.parentElement, `${field.label} wajib diisi.`);
+                hasError = true;
             }
         });
         
-        // Enable/disable submit button based on file upload status
-        if (allRejectedFilesUploaded) {
-            submitBtn.disabled = false;
-            // PERUBAHAN: Mengubah warna tombol menjadi hijau saat semua file yang perlu direvisi sudah diganti
-            submitBtn.classList.remove('bg-gray-400');
-            submitBtn.classList.add('bg-[#00A651]');
-        } else {
-            submitBtn.disabled = true;
-            // PERUBAHAN: Mengubah warna tombol menjadi abu-abu saat ada file yang belum diganti
-            submitBtn.classList.remove('bg-[#00A651]');
-            submitBtn.classList.add('bg-gray-400');
+        if (hasError) {
+            const firstError = document.querySelector('.revision-error');
+            if(firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return false;
         }
+        return true;
+    }
+    
+    function showError(element, message) {
+        const oldError = element.querySelector('.revision-error');
+        if(oldError) oldError.remove();
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'revision-error text-red-500 text-xs mt-1 font-medium flex items-center gap-1';
+        errorDiv.innerHTML = `<i data-lucide="alert-circle" size="12"></i> ${message}`;
+        element.appendChild(errorDiv);
+        lucide.createIcons();
     }
 
     function closeSuccessModal() {
@@ -1394,92 +2197,18 @@
         lucide.createIcons();
     }
 
-    // PERUBAHAN: Perbarui fungsi validasi untuk form dinamis
-    function validateRevisionForm() {
-        const form = document.getElementById('revision-form-submit');
-        const fileInputs = form.querySelectorAll('input[type="file"]');
-        let hasError = false;
-        
-        document.querySelectorAll('.revision-error').forEach(el => el.remove());
-        
-        const perihalInput = document.getElementById('revision-perihal');
-        if (!perihalInput.value.trim()) {
-            showError(perihalInput.parentElement, 'Perihal / Judul wajib diisi');
-            hasError = true;
-        }
-        
-        fileInputs.forEach(input => {
-            const reqId = input.name.match(/\d+/)[0];
-            const isRequired = input.getAttribute('data-required') === 'true';
-            const container = input.closest('.file-upload-item');
-            
-            const hasNewFile = input.files.length > 0;
-            const hasExistingFile = container.textContent.includes('File:');
-            const isRejected = container.textContent.includes('Perlu Revisi');
-            
-            if (isRejected && !hasNewFile) {
-                showError(container, 'Dokumen yang ditolak wajib diunggah ulang.');
-                hasError = true;
-            } else if (isRequired && !hasExistingFile && !hasNewFile) {
-                showError(container, 'Dokumen ini wajib diunggah.');
-                hasError = true;
-            }
-        });
-
-        // PERUBAHAN: Tambahkan validasi untuk field dinamis
-        const dynamicFields = @json($submission->service->form_fields ?? []);
-        dynamicFields.forEach(field => {
-            const input = form.querySelector(`[name="form_data[${field.name}]"]`);
-            if (field.is_required && input && !input.value.trim()) {
-                showError(input.closest('.group') || input.parentElement, `${field.label} wajib diisi.`);
-                hasError = true;
-            }
-        });
-        
-        if (hasError) {
-            const firstError = document.querySelector('.revision-error');
-            if(firstError) {
-                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            return false;
-        }
-        
-        return true;
-    }
-    
-    function showError(element, message) {
-        const oldError = element.querySelector('.revision-error');
-        if(oldError) { oldError.remove(); }
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'revision-error text-red-500 text-xs mt-1 font-medium flex items-center gap-1';
-        errorDiv.innerHTML = `<i data-lucide="alert-circle" size="12"></i> ${message}`;
-        element.appendChild(errorDiv);
-        lucide.createIcons();
-    }
-
     function downloadDocumentAsPDF() {
         const loadingIndicator = document.createElement('div');
         loadingIndicator.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
-        loadingIndicator.innerHTML = `
-            <div class="bg-white rounded-lg p-6 flex flex-col items-center">
-                <i data-lucide="loader-2" class="animate-spin text-[#00A651] mb-2" size="32"></i>
-                <p class="text-gray-600">Menghasilkan PDF...</p>
-            </div>
-        `;
+        loadingIndicator.innerHTML = '<div class="bg-white rounded-lg p-6 flex flex-col items-center"><i data-lucide="loader-2" class="animate-spin text-[#00A651] mb-2" size="32"></i><p class="text-gray-600">Generating PDF...</p></div>';
         document.body.appendChild(loadingIndicator);
         lucide.createIcons();
 
         const element = document.getElementById('document-preview');
         
-        html2canvas(element, {
-            scale: 2,
-            useCORS: true,
-            logging: false,
-            backgroundColor: '#ffffff'
-        }).then(canvas => {
+        html2canvas(element, { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' }).then(canvas => {
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF('p', 'mm', 'a4');
-            
             const imgData = canvas.toDataURL('image/png');
             const imgWidth = 210;
             const pageHeight = 295;
@@ -1499,23 +2228,19 @@
             
             const trackingId = document.getElementById('tracking-id').textContent.replace('ID: ', '');
             const perihal = document.getElementById('preview-perihal').textContent;
-            
             pdf.save(`${trackingId}_${perihal.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`);
-            
             document.body.removeChild(loadingIndicator);
         }).catch(error => {
             console.error('Error generating PDF:', error);
             document.body.removeChild(loadingIndicator);
-            alert('Gagal menghasilkan PDF. Silakan coba lagi.');
+            alert('Gagal menghasilkan PDF.');
         });
     }
 
     function updateDocumentStatus(docId, status) {
-        // PERUBAHAN: Validasi alasan penolakan wajib diisi
         if (status === 'rejected') {
             const notesTextarea = document.getElementById(`reject-notes-${docId}`);
             const errorElement = document.getElementById(`reject-error-${docId}`);
-            
             if (!notesTextarea.value.trim()) {
                 notesTextarea.classList.add('reject-required');
                 errorElement.classList.remove('hidden');
@@ -1535,128 +2260,67 @@
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             },
-            body: JSON.stringify({
-                status: status,
-                notes: notes
-            })
+            body: JSON.stringify({ status: status, notes: notes })
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Update document status in UI without page refresh
                 const docElement = document.querySelector(`[data-doc-id="${docId}"]`);
                 if (docElement) {
                     docElement.setAttribute('data-doc-status', status);
+                    const statusIcon = docElement.querySelector('.requirement-status-icon');
+                    const verificationDiv = docElement.querySelector(`#requirement-verification-${docId}`);
                     
-                    // Update visual status
-                    const statusIcon = docElement.querySelector('.w-8.h-8');
-                    const statusBadge = docElement.querySelector('.flex.items-center.justify-between');
-                    
-                    // Hide verification buttons
-                    const verificationButtons = document.getElementById(`verification-buttons-${docId}`);
-                    if (verificationButtons) {
-                        verificationButtons.style.display = 'none';
-                    }
-                    
-                    // Hide reject form if visible
+                    if (verificationDiv) verificationDiv.style.display = 'none';
                     const rejectForm = document.getElementById(`reject-form-${docId}`);
-                    if (rejectForm) {
-                        rejectForm.classList.add('hidden');
-                    }
+                    if (rejectForm) rejectForm.classList.add('hidden');
                     
-                    // Show edit button
-                    const verificationActions = docElement.querySelector('.verification-actions');
-                    if (verificationActions) {
-                        // Check if edit button already exists
-                        let editButton = verificationActions.querySelector('.edit-verification-btn');
-                        
-                        if (!editButton) {
-                            // Create edit button
-                            editButton = document.createElement('button');
-                            editButton.className = 'text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded border border-amber-200 hover:bg-amber-100 transition-colors edit-verification-btn';
-                            editButton.setAttribute('onclick', `toggleEditVerification(${docId})`);
-                            editButton.innerHTML = 'Edit';
-                            
-                            // Add edit button after the "Lihat" button
-                            const viewButton = verificationActions.querySelector('a');
-                            if (viewButton) {
-                                viewButton.insertAdjacentElement('afterend', editButton);
-                            }
-                        } else {
-                            // Reset edit button to default state
-                            resetEditButton(editButton);
-                        }
-                    }
+                    const editButton = docElement.querySelector('.edit-verification-btn');
+                    if (editButton) resetEditButton(editButton);
                     
                     if (status === 'approved') {
                         docElement.classList.remove('doc-status-pending', 'doc-status-rejected');
                         docElement.classList.add('doc-status-approved');
-                        
-                        statusIcon.classList.remove('bg-gray-100', 'text-gray-600', 'bg-red-100', 'text-red-600');
-                        statusIcon.classList.add('bg-green-100', 'text-green-600');
-                        statusIcon.innerHTML = '<i data-lucide="check" size="14"></i>';
-                        
-                        // Remove notes section for approved documents
-                        const notesElement = docElement.querySelector('.mb-3.p-2.bg-gray-50');
-                        if (notesElement) {
-                            notesElement.remove();
-                        }
+                        statusIcon.className = 'requirement-status-icon approved';
+                        statusIcon.innerHTML = '<i data-lucide="check" size="16"></i>';
                     } else if (status === 'rejected') {
                         docElement.classList.remove('doc-status-pending', 'doc-status-approved');
                         docElement.classList.add('doc-status-rejected');
+                        statusIcon.className = 'requirement-status-icon rejected';
+                        statusIcon.innerHTML = '<i data-lucide="x" size="16"></i>';
                         
-                        statusIcon.classList.remove('bg-gray-100', 'text-gray-600', 'bg-green-100', 'text-green-600');
-                        statusIcon.classList.add('bg-red-100', 'text-red-600');
-                        statusIcon.innerHTML = '<i data-lucide="x" size="14"></i>';
-                        
-                        // Add notes if provided
                         if (notes) {
-                            let notesElement = docElement.querySelector('.mb-3.p-2.bg-gray-50');
+                            let notesElement = docElement.querySelector('.requirement-note');
                             if (!notesElement) {
                                 notesElement = document.createElement('div');
-                                notesElement.className = 'mb-3 p-2 bg-gray-50 rounded text-xs text-gray-600';
-                                statusBadge.after(notesElement);
+                                notesElement.className = 'requirement-note rejected';
+                                docElement.appendChild(notesElement);
                             }
                             notesElement.innerHTML = `<strong>Catatan:</strong> ${notes}`;
                         }
                     }
-                    
-                    // Re-initialize Lucide icons
                     lucide.createIcons();
-                    
-                    // Check document statuses again to update UI
                     checkDocumentStatuses();
                 }
                 
-                // Show success modal
                 const modal = document.getElementById('doc-status-modal');
-                const iconContainer = document.getElementById('doc-status-icon');
-                const titleElement = document.getElementById('doc-status-title');
-                const messageElement = document.getElementById('doc-status-message');
-                
-                if (status === 'approved') {
-                    iconContainer.innerHTML = '<i data-lucide="check-circle" size="32" class="text-green-600"></i>';
-                    titleElement.textContent = 'Dokumen Disetujui';
-                    messageElement.textContent = 'Dokumen telah disetujui.';
-                } else {
-                    iconContainer.innerHTML = '<i data-lucide="x-circle" size="32" class="text-red-600"></i>';
-                    titleElement.textContent = 'Dokumen Ditolak';
-                    messageElement.textContent = 'Dokumen perlu direvisi sesuai catatan yang diberikan.';
-                }
-                
+                document.getElementById('doc-status-icon').innerHTML = status === 'approved' 
+                    ? '<i data-lucide="check-circle" size="32" class="text-green-600"></i>' 
+                    : '<i data-lucide="x-circle" size="32" class="text-red-600"></i>';
+                document.getElementById('doc-status-title').textContent = status === 'approved' ? 'Dokumen Disetujui' : 'Dokumen Ditolak';
+                document.getElementById('doc-status-message').textContent = status === 'approved' ? 'Dokumen telah disetujui.' : 'Dokumen perlu direvisi.';
                 modal.classList.remove('hidden');
                 lucide.createIcons();
             } else {
-                alert('Gagal memperbarui status dokumen: ' + data.message);
+                alert('Gagal: ' + data.message);
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Terjadi kesalahan saat memperbarui status dokumen.');
+            alert('Terjadi kesalahan.');
         });
     }
     
-    // PERUBAHAN: Fungsi untuk mereset tombol edit ke keadaan semula
     function resetEditButton(editButton) {
         editButton.innerHTML = 'Edit';
         editButton.classList.remove('text-gray-600', 'bg-gray-50', 'border-gray-200', 'hover:bg-gray-100');
@@ -1664,38 +2328,27 @@
         lucide.createIcons();
     }
     
-    // PERUBAHAN: Fungsi toggle edit verification yang diperbaiki
     function toggleEditVerification(docId) {
-        const verificationButtons = document.getElementById(`verification-buttons-${docId}`);
+        const verificationDiv = document.getElementById(`requirement-verification-${docId}`);
         const editButton = document.querySelector(`button[onclick="toggleEditVerification(${docId})"]`);
-        
-        // Check current state by checking if verification buttons are visible
-        const isEditMode = verificationButtons.style.display === 'flex';
+        const isEditMode = verificationDiv.style.display === 'flex';
         
         if (!isEditMode) {
-            // Show verification buttons (enter edit mode)
-            verificationButtons.style.display = 'flex';
+            verificationDiv.style.display = 'flex';
             editButton.textContent = 'Batal';
             editButton.classList.remove('text-amber-600', 'bg-amber-50', 'border-amber-200', 'hover:bg-amber-100');
             editButton.classList.add('text-gray-600', 'bg-gray-50', 'border-gray-200', 'hover:bg-gray-100');
         } else {
-            // Hide verification buttons (exit edit mode)
-            verificationButtons.style.display = 'none';
+            verificationDiv.style.display = 'none';
             resetEditButton(editButton);
-            
-            // Hide reject form if visible
             const rejectForm = document.getElementById(`reject-form-${docId}`);
-            if (rejectForm) {
-                rejectForm.classList.add('hidden');
-            }
+            if (rejectForm) rejectForm.classList.add('hidden');
         }
-        
         lucide.createIcons();
     }
     
     function showRejectForm(docId) {
         document.getElementById(`reject-form-${docId}`).classList.remove('hidden');
-        // Reset error state
         const notesTextarea = document.getElementById(`reject-notes-${docId}`);
         const errorElement = document.getElementById(`reject-error-${docId}`);
         notesTextarea.classList.remove('reject-required');
@@ -1704,7 +2357,6 @@
     
     function hideRejectForm(docId) {
         document.getElementById(`reject-form-${docId}`).classList.add('hidden');
-        // Reset error state
         const notesTextarea = document.getElementById(`reject-notes-${docId}`);
         const errorElement = document.getElementById(`reject-error-${docId}`);
         notesTextarea.classList.remove('reject-required');
@@ -1715,103 +2367,54 @@
         document.getElementById('reject-modal').classList.remove('hidden');
         lucide.createIcons();
     }
-
     function closeRejectModal() {
         document.getElementById('reject-modal').classList.add('hidden');
     }
-
     function confirmRejection() {
         const rejectionReason = document.getElementById('rejection_reason').value;
-        
-        if (!rejectionReason.trim()) {
-            showErrorModal('Alasan penolakan wajib diisi.');
-            return;
-        }
-        
+        if (!rejectionReason.trim()) { showErrorModal('Alasan penolakan wajib diisi.'); return; }
         closeRejectModal();
-        
-        const form = document.querySelector('form[action*="verifikator/updateStatus"]');
+        const form = document.getElementById('verification-form');
+        form.querySelector('input[name="status"][value="rejected"]').checked = true;
+        form.querySelector('textarea[name="rejection_reason"]').value = rejectionReason;
         form.submit();
     }
 
+    // --- EVENT LISTENER SAAT HALAMAN DIMUAT ---
     document.addEventListener('DOMContentLoaded', function() {
-        const revisionForm = document.getElementById('revision-form-submit');
+        lucide.createIcons();
         
-        if (revisionForm) {
-            revisionForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                if (!validateRevisionForm()) {
-                    showErrorModal('Silakan periksa kembali formulir Anda. Pastikan semua field yang wajib diisi dengan benar.');
-                    return;
-                }
-                
-                const submitBtn = revisionForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i data-lucide="loader-2" class="animate-spin mr-2" size="16"></i> Mengirim...';
-                submitBtn.disabled = true;
-                lucide.createIcons();
-                
-                const formData = new FormData(revisionForm);
-                
-                const dateInput = document.getElementById('revision-tanggal_surat');
-                const dateValue = dateInput.value;
-                
-                if (dateValue) {
-                    const parts = dateValue.split('/');
-                    if (parts.length === 3) {
-                        const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-                        formData.set('tanggal_surat', formattedDate);
-                    }
-                }
-                
-                fetch(revisionForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        document.getElementById('revision-form').classList.add('hidden');
-                        document.getElementById('success-modal').classList.remove('hidden');
-                        lucide.createIcons();
-                    } else {
-                        let errorMessage = data.message || 'Terjadi kesalahan saat mengirim revisi. Silakan coba lagi.';
-                        if (data.errors) {
-                             const firstErrorKey = Object.keys(data.errors)[0];
-                             errorMessage = data.errors[firstErrorKey][0];
-                        }
-                        showErrorModal(errorMessage);
-                        
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                        lucide.createIcons();
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    showErrorModal('Terjadi kesalahan jaringan. Silakan coba lagi.');
-                    
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    lucide.createIcons();
-                });
-            });
-        }
+        // Jalankan pengecekan status saat halaman pertama kali dimuat
+        // Ini memastikan state sesuai dengan data di server setelah refresh
+        checkDocumentStatuses();
         
+        // Inisialisasi status radio yang sudah terpilih (untuk handleStatusChange)
+        const statusRadios = document.querySelectorAll('input[name="status"]');
+        statusRadios.forEach(radio => {
+            if (radio.checked) {
+                handleStatusChange(radio.value);
+            }
+        });
+        
+        // Form verification submit handler
         const verificationForm = document.getElementById('verification-form');
         if (verificationForm) {
             verificationForm.addEventListener('submit', function(e) {
                 const statusValue = document.querySelector('input[name="status"]:checked').value;
-                
                 if (statusValue === 'rejected') {
                     e.preventDefault();
                     showRejectModal();
                 }
             });
+        }
+        
+        // Handler untuk revision form jika ada
+        const revisionForm = document.getElementById('revision-form-submit');
+        if (revisionForm) {
+             revisionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleRevisionSubmit(this);
+             });
         }
     });
 </script>

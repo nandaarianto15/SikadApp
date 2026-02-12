@@ -13,15 +13,15 @@ class SubmissionDocument extends Model
         'file_name',
         'file_size',
         'uploaded_at',
-        'status', // Tambahkan ini
-        'notes', // Tambahkan ini
-        'verified_by', // Tambahkan ini
-        'verified_at', // Tambahkan ini
+        'status',
+        'notes',
+        'verified_by',
+        'verified_at'
     ];
 
     protected $casts = [
         'uploaded_at' => 'datetime',
-        'verified_at' => 'datetime',
+        'verified_at' => 'datetime'
     ];
 
     public $timestamps = false;

@@ -15,7 +15,6 @@
     </div>
     
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Detail Pengajuan -->
         <div class="lg:col-span-2 space-y-6">
             <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
                 <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center gap-2">
@@ -63,7 +62,6 @@
                 </div>
             </div>
             
-            <!-- Dokumen Persyaratan -->
             <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
                 <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center gap-2">
                     <i data-lucide="paperclip" size="20" class="text-[#00A651]"></i> Dokumen Persyaratan
@@ -87,7 +85,6 @@
                 </div>
             </div>
             
-            <!-- Riwayat Proses -->
             <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
                 <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center gap-2">
                     <i data-lucide="history" size="20" class="text-[#00A651]"></i> Riwayat Proses
@@ -118,7 +115,6 @@
             </div>
         </div>
         
-        <!-- Form Verifikasi -->
         <div class="space-y-6">
             <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
                 <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center gap-2">
@@ -200,7 +196,6 @@
     </div>
 </div>
 
-<!-- Document Viewer Modal -->
 <div id="document-viewer-modal" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center">
     <div class="bg-white w-[92%] max-w-5xl h-[90vh] max-h-[90vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
         <!-- Header -->
@@ -217,9 +212,7 @@
             </div>
         </div>
 
-        <!-- Content -->
         <div class="flex-1 relative overflow-hidden p-4">
-            <!-- Loading -->
             <div id="pdf-loading" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                 <div class="text-center">
                     <i data-lucide="loader-2" class="animate-spin text-[#00A651]" size="32"></i>
@@ -229,7 +222,6 @@
                 </div>
             </div>
 
-            <!-- Error -->
             <div id="pdf-error" class="absolute inset-0 flex items-center justify-center bg-white z-10 hidden">
                 <div class="text-center text-red-600">
                     <i data-lucide="alert-circle" size="32"></i>
@@ -241,7 +233,6 @@
                 </div>
             </div>
 
-            <!-- PDF Viewer -->
             <iframe id="document-frame" class="w-full h-full border-0 rounded-xl" style="display: none;"></iframe>
         </div>
     </div>
@@ -251,7 +242,6 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Initialize Lucide icons
         lucide.createIcons();
     });
 </script>

@@ -16,15 +16,13 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        // Get statistics
-        $totalUsers = User::count();
-        $totalServices = Service::where('is_active', true)->count();
-        $totalNews = News::where('is_published', true)->count();
+        $totalUsers     = User::count();
+        $totalServices  = Service::where('is_active', true)->count();
+        $totalNews      = News::where('is_published', true)->count();
         
         return view('admin.dashboard', compact('totalUsers', 'totalServices', 'totalNews'));
     }
     
-   // NEWS MANAGEMENT
     public function newsIndex()
     {
         $news = News::with('author')->orderBy('published_at', 'desc')->paginate(10);
@@ -39,22 +37,22 @@ class AdminController extends Controller
     public function newsStore(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required',
-            'category' => 'required|string|max:100',
-            'tag' => 'nullable|string|max:100',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'published_at' => 'nullable|date',
-            'is_published' => 'nullable|boolean',
+            'title'         => 'required|string|max:255',
+            'content'       => 'required',
+            'category'      => 'required|string|max:100',
+            'tag'           => 'nullable|string|max:100',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'published_at'  => 'nullable|date',
+            'is_published'  => 'nullable|boolean',
         ]);
         
         try {
-            $news = new News();
-            $news->title = $request->title;
-            $news->slug = Str::slug($request->title);
-            $news->content = $request->content;
+            $news           = new News();
+            $news->title    = $request->title;
+            $news->slug     = Str::slug($request->title);
+            $news->content  = $request->content;
             $news->category = $request->category;
-            $news->tag = $request->tag;
+            $news->tag      = $request->tag;
             
             if ($request->filled('published_at')) {
                 $news->published_at = \Carbon\Carbon::parse($request->published_at);
@@ -63,13 +61,13 @@ class AdminController extends Controller
             }
             
             $news->is_published = $request->has('is_published') ? true : false;
-            $news->author_id = Auth::user()->id;
+            $news->author_id    = Auth::user()->id;
             
             if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('news', $imageName, 'public');
-                $news->image = 'news/' . $imageName;
+                $image          = $request->file('image');
+                $imageName      = time() . '.' . $image->getClientOriginalExtension();
+                $path           = $image->storeAs('news', $imageName, 'public');
+                $news->image    = 'news/' . $imageName;
             }
             
             $news->save();
@@ -89,22 +87,22 @@ class AdminController extends Controller
     public function newsUpdate(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required',
-            'category' => 'required|string|max:100',
-            'tag' => 'nullable|string|max:100',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'published_at' => 'nullable|date',
-            'is_published' => 'nullable|boolean',
+            'title'         => 'required|string|max:255',
+            'content'       => 'required',
+            'category'      => 'required|string|max:100',
+            'tag'           => 'nullable|string|max:100',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'published_at'  => 'nullable|date',
+            'is_published'  => 'nullable|boolean',
         ]);
         
         try {
-            $news = News::findOrFail($id);
-            $news->title = $request->title;
-            $news->slug = Str::slug($request->title);
-            $news->content = $request->content;
+            $news           = News::findOrFail($id);
+            $news->title    = $request->title;
+            $news->slug     = Str::slug($request->title);
+            $news->content  = $request->content;
             $news->category = $request->category;
-            $news->tag = $request->tag;
+            $news->tag      = $request->tag;
             
             if ($request->filled('published_at')) {
                 $news->published_at = \Carbon\Carbon::parse($request->published_at);
@@ -117,10 +115,10 @@ class AdminController extends Controller
                     Storage::disk('public')->delete($news->image);
                 }
                 
-                $image = $request->file('image');
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('news', $imageName, 'public');
-                $news->image = 'news/' . $imageName;
+                $image          = $request->file('image');
+                $imageName      = time() . '.' . $image->getClientOriginalExtension();
+                $path           = $image->storeAs('news', $imageName, 'public');
+                $news->image    = 'news/' . $imageName;
             }
             
             $news->save();
@@ -144,7 +142,6 @@ class AdminController extends Controller
         return redirect()->route('admin.news.index')->with('success', 'Berita berhasil dihapus');
     }
     
-    // SERVICE MANAGEMENT
     public function serviceIndex()
     {
         $services = Service::with('requirements')->orderBy('name')->paginate(10);
@@ -159,20 +156,20 @@ class AdminController extends Controller
     public function serviceStore(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required',
-            'icon' => 'nullable|string|max:100',
-            'form_fields' => 'nullable|array',
-            'form_fields.*.name' => 'required|string|max:255',
-            'form_fields.*.label' => 'required|string|max:255',
-            'form_fields.*.type' => 'required|string|in:text,number,email,date,textarea,select',
-            'form_fields.*.is_required' => 'nullable|boolean',
-            'form_fields.*.options' => 'nullable|array',
-            'form_fields.*.placeholder' => 'nullable|string|max:255',
-            'requirements' => 'required|array|min:1',
-            'requirements.*.name' => 'required|string|max:255',
-            'requirements.*.description' => 'nullable|string',
-            'requirements.*.sort_order' => 'required|integer|min:1',
+            'name'                          => 'required|string|max:255',
+            'description'                   => 'required',
+            'icon'                          => 'nullable|string|max:100',
+            'form_fields'                   => 'nullable|array',
+            'form_fields.*.name'            => 'required|string|max:255',
+            'form_fields.*.label'           => 'required|string|max:255',
+            'form_fields.*.type'            => 'required|string|in:text,number,email,date,textarea,select',
+            'form_fields.*.is_required'     => 'nullable|boolean',
+            'form_fields.*.options'         => 'nullable|array',
+            'form_fields.*.placeholder'     => 'nullable|string|max:255',
+            'requirements'                  => 'required|array|min:1',
+            'requirements.*.name'           => 'required|string|max:255',
+            'requirements.*.description'    => 'nullable|string',
+            'requirements.*.sort_order'     => 'required|integer|min:1',
         ]);
 
         $sortOrders = collect($request->requirements)->pluck('sort_order');
@@ -182,35 +179,33 @@ class AdminController extends Controller
                 ->withInput();
         }
 
-        $slug = Str::slug($request->name);
-        $original = $slug;
-        $i = 1;
+        $slug       = Str::slug($request->name);
+        $original   = $slug;
+        $i          = 1;
 
         while (Service::where('slug', $slug)->exists()) {
             $slug = $original . '-' . $i++;
         }
 
         $service = Service::create([
-            'name' => $request->name,
-            'slug' => $slug,
-            'description' => $request->description,
-            'icon' => $request->icon ?? 'file-text',
-            'is_active' => $request->boolean('is_active'),
-            'form_fields' => $request->form_fields,
+            'name'          => $request->name,
+            'slug'          => $slug,
+            'description'   => $request->description,
+            'icon'          => $request->icon ?? 'file-text',
+            'is_active'     => $request->boolean('is_active'),
+            'form_fields'   => $request->form_fields,
         ]);
 
         foreach ($request->requirements as $req) {
             $service->requirements()->create([
-                'name' => $req['name'],
-                'description' => $req['description'] ?? null,
-                'is_required' => isset($req['is_required']) ? 1 : 0,
-                'sort_order' => $req['sort_order'],
+                'name'          => $req['name'],
+                'description'   => $req['description'] ?? null,
+                'is_required'   => isset($req['is_required']) ? 1 : 0,
+                'sort_order'    => $req['sort_order'],
             ]);
         }
 
-        return redirect()
-            ->route('admin.services.index')
-            ->with('success', 'Layanan berhasil ditambahkan');
+        return redirect()->route('admin.services.index')->with('success', 'Layanan berhasil ditambahkan');
     }
     
     public function serviceEdit($id)
@@ -222,22 +217,22 @@ class AdminController extends Controller
     public function serviceUpdate(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required',
-            'icon' => 'nullable|string|max:100',
-            'is_active' => 'nullable|boolean',
-            'form_fields' => 'nullable|array',
-            'form_fields.*.name' => 'required|string|max:255',
-            'form_fields.*.label' => 'required|string|max:255',
-            'form_fields.*.type' => 'required|string|in:text,number,email,date,textarea,select',
-            'form_fields.*.is_required' => 'nullable|boolean',
-            'form_fields.*.options' => 'nullable|array',
-            'form_fields.*.placeholder' => 'nullable|string|max:255',
-            'requirements' => 'required|array|min:1',
-            'requirements.*.name' => 'required|string|max:255',
-            'requirements.*.description' => 'nullable|string',
-            'requirements.*.is_required' => 'nullable|boolean',
-            'requirements.*.sort_order' => 'required|integer|min:1',
+            'name'                          => 'required|string|max:255',
+            'description'                   => 'required',
+            'icon'                          => 'nullable|string|max:100',
+            'is_active'                     => 'nullable|boolean',
+            'form_fields'                   => 'nullable|array',
+            'form_fields.*.name'            => 'required|string|max:255',
+            'form_fields.*.label'           => 'required|string|max:255',
+            'form_fields.*.type'            => 'required|string|in:text,number,email,date,textarea,select',
+            'form_fields.*.is_required'     => 'nullable|boolean',
+            'form_fields.*.options'         => 'nullable|array',
+            'form_fields.*.placeholder'     => 'nullable|string|max:255',
+            'requirements'                  => 'required|array|min:1',
+            'requirements.*.name'           => 'required|string|max:255',
+            'requirements.*.description'    => 'nullable|string',
+            'requirements.*.is_required'    => 'nullable|boolean',
+            'requirements.*.sort_order'     => 'required|integer|min:1',
         ]);
 
         try {
@@ -246,12 +241,12 @@ class AdminController extends Controller
                 return back()->with('error', 'Nomor urutan persyaratan tidak boleh duplikat!')->withInput();
             }
             
-            $service = Service::findOrFail($id);
-            $service->name = $request->name;
+            $service        = Service::findOrFail($id);
+            $service->name  = $request->name;
             
-            $slug = Str::slug($request->name);
-            $original = $slug;
-            $i = 1;
+            $slug       = Str::slug($request->name);
+            $original   = $slug;
+            $i          = 1;
 
             if ($slug !== $service->slug) {
                 while (Service::where('slug', $slug)->where('id', '!=', $id)->exists()) {
@@ -260,22 +255,22 @@ class AdminController extends Controller
                 $service->slug = $slug;
             }
             
-            $service->description = $request->description;
-            $service->icon = $request->icon ?? 'file-text';
-            $service->is_active = $request->boolean('is_active');
-            $service->form_fields = $request->form_fields;
+            $service->description   = $request->description;
+            $service->icon          = $request->icon ?? 'file-text';
+            $service->is_active     = $request->boolean('is_active');
+            $service->form_fields   = $request->form_fields;
             $service->save();
             
             ServiceRequirement::where('service_id', $service->id)->delete();
             
             if ($request->has('requirements')) {
                 foreach ($request->requirements as $req) {
-                    $requirement = new ServiceRequirement();
-                    $requirement->service_id = $service->id;
-                    $requirement->name = $req['name'];
-                    $requirement->description = $req['description'] ?? '';
-                    $requirement->is_required = isset($req['is_required']) ? $req['is_required'] : true;
-                    $requirement->sort_order = $req['sort_order'];
+                    $requirement                = new ServiceRequirement();
+                    $requirement->service_id    = $service->id;
+                    $requirement->name          = $req['name'];
+                    $requirement->description   = $req['description'] ?? '';
+                    $requirement->is_required   = isset($req['is_required']) ? $req['is_required'] : true;
+                    $requirement->sort_order    = $req['sort_order'];
                     $requirement->save();
                 }
             }
