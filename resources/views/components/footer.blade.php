@@ -2,8 +2,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
             <div class="md:col-span-1 animate-slide-up">
-                <h3 class="text-xl font-bold mb-4 flex items-center justify-center md:justify-start gap-3">
-                    <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-[#00A651] font-bold text-base">KT</div>
+                <h3 class="text-xl font-bold mb-4 flex items-center justify-center md:justify-start gap-1">
+                    <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden p-1">
+                        <img src="{{ asset('img/logo-kaltim.png') }}" alt="Logo Kaltim" class="w-full h-full object-contain">
+                    </div>
                     SIKAD KALTIM
                 </h3>
                 <p class="text-gray-400 text-xs leading-relaxed">

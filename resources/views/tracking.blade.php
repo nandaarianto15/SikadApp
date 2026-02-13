@@ -712,7 +712,7 @@
 
 @section('content')
 <div class="flex flex-col h-screen bg-[#F3F4F6] font-sans">
-    <div class="bg-white border-b px-4 lg:px-6 py-4 flex items-center gap-4 shadow-sm sticky top-0 z-40 shrink-0">
+    <div class="bg-white border-b px-4 lg:px-6 py-7 flex items-center gap-4 shadow-sm sticky top-0 z-40 shrink-0">
         @if(Auth::user()->role === 'pemohon')
             <a href="{{ route('pemohon.dashboard') }}" class="hover:bg-gray-100 p-2 rounded-full transition-colors"><i data-lucide="chevron-left" size="24" class="text-gray-500"></i></a>
         @else

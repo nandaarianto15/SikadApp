@@ -16,15 +16,14 @@
         <i data-lucide="chevron-left" size="20" class="mr-1"></i> Kembali
     </a>
 
-    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden
-                animate-slide-up relative z-10 flex flex-col">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-slide-up relative z-10 flex flex-col">
         <div class="bg-[#00A651] p-8 md:p-10 text-center text-white relative overflow-hidden">
             <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent animate-pulse"></div>
-            <div class="w-16 h-16 md:w-20 md:h-20 bg-white/20 backdrop-blur-md rounded-2xl
-                        flex items-center justify-center mx-auto mb-4 md:mb-6
-                        text-2xl md:text-3xl font-bold border border-white/30 shadow-lg">
-                KT
+            
+            <div class="w-24 h-24 md:w-32 md:h-32 rounded-2xl flex items-center justify-center mx-auto mb-1 md:mb-2 overflow-hidden p-3">
+                <img src="{{ asset('img/logo-kaltim.png') }}" alt="Logo Kaltim" class="w-full h-full object-contain">
             </div>
+            
             <h1 class="text-2xl md:text-3xl font-bold mb-2">Login SIKAD</h1>
             <p class="text-emerald-100 text-sm">Silakan masuk menggunakan NIP Pegawai</p>
         </div>
@@ -56,7 +55,6 @@
                             id="nip-input"
                             name="nip"
                             value="{{ old('nip') }}"
-                            {{-- placeholder="Contoh: 19900101 201401 1 001" --}}
                             placeholder="Masukkan NIP Anda"
                             autocomplete="off"
                             inputmode="numeric"

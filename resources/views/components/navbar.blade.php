@@ -8,7 +8,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer group z-50" onclick="scrollToId('beranda')">
-                <div id="nav-logo-box" class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xl shadow-sm transition-all duration-500 group-hover:rotate-12 bg-white text-[#00A651]">KT</div>
+                <div id="nav-logo-box" class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:rotate-12 overflow-hidden">
+                    <img src="{{ asset('img/logo-kaltim.png') }}" alt="Logo Kaltim" class="w-full h-full object-contain">
+                </div>
                 <div id="nav-text-box" class="flex flex-col transition-colors duration-300 text-white">
                     <span class="font-bold text-lg leading-tight tracking-tight group-hover:text-[#F59E0B] transition-colors">SIKAD <span id="nav-subtext" class="text-white">KALTIM</span></span>
                     <span class="text-[10px] uppercase tracking-widest opacity-80">Provinsi Kalimantan Timur</span>

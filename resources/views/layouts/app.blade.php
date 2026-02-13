@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'SIKAD KALTIM') - Transformasi Digital Kearsipan</title>
     
+    <link rel="icon" type="image/png" href="{{ asset('img/logo-kaltim.png') }}" />
+    <link rel="apple-touch-icon" href="{{ asset('img/logo-kaltim.png') }}" />
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     

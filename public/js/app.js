@@ -13,8 +13,8 @@ window.addEventListener('scroll', () => {
         nav.classList.add('bg-white', 'shadow-md', 'py-3');
         nav.classList.remove('bg-transparent', 'py-4', 'lg:py-6');
 
-        logoBox?.classList.replace('bg-white', 'bg-[#00A651]');
-        logoBox?.classList.replace('text-[#00A651]', 'text-white');
+        // logoBox?.classList.replace('bg-white', 'bg-[#00A651]');
+        // logoBox?.classList.replace('text-[#00A651]', 'text-white');
 
         textBox?.classList.replace('text-white', 'text-[#1F2937]');
         subText?.classList.replace('text-white', 'text-[#00A651]');
@@ -33,8 +33,8 @@ window.addEventListener('scroll', () => {
         nav.classList.remove('bg-white', 'shadow-md', 'py-3');
         nav.classList.add('bg-transparent', 'py-4', 'lg:py-6');
 
-        logoBox?.classList.add('bg-white', 'text-[#00A651]');
-        logoBox?.classList.remove('bg-[#00A651]', 'text-white');
+        // logoBox?.classList.add('bg-white', 'text-[#00A651]');
+        // logoBox?.classList.remove('bg-[#00A651]', 'text-white');
 
         textBox?.classList.add('text-white');
         textBox?.classList.remove('text-[#1F2937]');

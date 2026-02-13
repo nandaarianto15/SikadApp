@@ -7,6 +7,9 @@
     <meta name="user-role" content="{{ Auth::user()->role }}">
     <title>@yield('title', 'SIKAD KALTIM') - Dashboard</title>
 
+    <link rel="icon" type="image/png" href="{{ asset('img/logo-kaltim.png') }}" />
+    <link rel="apple-touch-icon" href="{{ asset('img/logo-kaltim.png') }}" />
+
     <script src="https://cdn.tailwindcss.com"></script>    
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
@@ -74,7 +77,9 @@
     <nav class="bg-[#00A651] text-white p-4 shadow-md sticky top-0 z-40">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-2 lg:px-4">
             <div class="flex items-center gap-3 font-bold text-lg">
-                <div class="w-9 h-9 bg-white text-[#00A651] rounded-lg flex items-center justify-center shadow-sm">KT</div>
+                <div class="w-16 h-16 rounded-lg flex items-center justify-center overflow-hidden p-1">
+                    <img src="{{ asset('img/logo-kaltim.png') }}" alt="Logo Kaltim" class="w-full h-full object-contain">
+                </div>
                 <span class="hidden sm:inline tracking-tight">SIKAD <span class="opacity-80 font-normal">Internal</span></span>
             </div>
             <div class="flex items-center gap-4 text-sm">
